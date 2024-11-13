@@ -3,29 +3,31 @@ Contributors: Payerurl team
 Donate link: 
 Tags: Binance, USDT, coinbase, Bitcoin, ethereum, Crypto
 Requires at least: 5.0
-Tested up to: 6.6.1
+Tested up to: 6.6.2
 Requires PHP: 7.0
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
 
-ABC Crypto Checkout is a cryptocurrency payment processor. You can receive customer payments direct your crypto wallet without helping any middleware account. We support USDT TRC20, Bitcoin BTC, Ethereum ERC20 through WooCommerce platform.
+ABC Crypto Checkout is a cryptocurrency payment processor. You can receive customer payments direct your crypto wallet without helping any middleware account. We support USDT TRC20,USDT ERC20,USDC ERC20, Bitcoin BTC, Ethereum ERC20, TON through WooCommerce platform.
 
 == Description ==
  
  [Live Demo](https://plugin.payerurl.com/shop/) |  [Setup Video](https://payerurl.com/payerurl-woocommerce-plugin-for-merchant-integration/)
 
 ### Introduction ###
- ABC Crypto plugin is powered by Payerurl. ABC Crypto Checkout is a cryptocurrency payment processor. You can receive customer payments direct to your crypto wallet without helping any middleware account. We support USDT TRC20, Bitcoin BTC, Ethereum ERC20 and Binance pay payment through WooCommerce platform. It will be a good option for you, while you are looking for a Binance pay plugin in WordPress. Payerurl is able to Receive your crypto payments through Binance pay and ABC plugin acting as Binance Woocommerce Bridge. This plugin is supported by woocommerce order processing functions so it would be a smoother experience for your users as they never have to leave your website to make payments. 
+ ABC Crypto plugin is powered by Payerurl. ABC Crypto Checkout is a cryptocurrency payment processor. Merchant/website owner will receive customer payments direct to your crypto wallet without helping any middleware account. We support USDT TRC20, USDC ERC20, USDT ERC20, Bitcoin BTC, Ethereum ERC20, TON coin and Binance pay payment through WooCommerce platform. It will be a good option for you, while you are looking for a Binance pay plugin in WordPress. Payerurl is able to Receive your crypto payments through Binance pay and ABC plugin acting as Binance Woocommerce Bridge. This plugin is supported by woocommerce order processing functions so it would be a smoother experience for your users as they never have to leave your website to make payments. 
 
-The ABC plugin converts any Fiat currency to USDT, ETH, BTC etc  at the time of the transaction with a live exchange rate to pay the user online, and once payment is complete instantly credits to the merchant’s account and also provides a response to the merchant website payment information through API for the change Order status to "processing". Any coin on the funding wallet of Binance Pay as well as any coin with TRC20, ERC20, or Blockchain network support for customer transactions.
+The ABC plugin converts any Fiat currency to USDT, USDC, ETH, BTC, TON coin etc  at the time of the transaction with a live exchange rate to pay the user online, and once payment is complete instantly credits to the merchant’s account and also provides a response to the merchant website payment information through API for the change Order status to "processing".
+
+In payerurl dashboard merchant/website owner can add their binance pay account using Binance pay API, so that merchant/website owner can start receiving customer payment directly to their own binance pay account. 
 
 
 
 KEY FEATURES
-🔸	Binance Pay, USDT TRC20, BTC, ETH ERC20
+🔸	Binance Pay, USDT TRC20,USDT ERC20,USDC ERC20,Bitcoin BTC, ETH ERC20, TON coin 
 🔸	169+ fiat currencies [FIAT CURRENCY LIST](https://payerurl.com/fiat-to-crypto-exchange/) including USD, CAD, GBP, and EUR. etc including real-time exchange rate. (View the current exchange rate at: payerurl.com Exchange Rate (LIVE)).
 🔸	100% Free Open Source Plug-in on.
 🔸	No Bank Account Needed or no personal identity as mandatory
@@ -35,16 +37,16 @@ KEY FEATURES
 🔸	Tested OK with WooCommerce 6.3 or up.
 
 Ecommerce Plugins and Integration
-WooCommerce, PHP , Python, JAVA, JavaScript
+WooCommerce, PHP , Python, Node, Dhru Fusion 
 
 ABOUT PAYERURL
-[payerurl.com](https://payerurl.com) is a global provider of online crypto currency payment solutions. Moreover, Payerurl.com is a payment platform where vendors and consumers can transact with each other, backed by the new BTC, USDT, and ETH payment protocols supported by Binance pay and another network. All the transactions are executed on a 64-encoding and 256-base-encryption basis. For this reason, there is no way to hijack data packets in the middle of the transaction. Any user makes a transaction using the USDT wordpress platform.
+[payerurl.com](https://payerurl.com) is a payment processor that allows customers to transfer cryptocurrency payments directly to the merchant wallet. Additionally, merchants can integrate the Binance Pay API, and also can add USDT TRC20, USDT ERC20, ETH ERC20, Bitcoin BTC, TON, USDC ERC20 receiving wallets. We use the current exchange rate to convert any local currency from the merchant’s website, and we give the merchant receiving wallet to the consumer in exchange for the corresponding amount of cryptocurrency.
 
 
 == Installation ==
 
 * Install and activate through the 'Plugins' menu in WordPress.
-* Registraion and login dashboard.payerurl.com
+* Registraion and login [dash.payerurl.com](https://dash.payerurl.com)
 * Go to Dashboard >> get api credencials >> click on generate
 * Navigate to WooCommerce » Settings » Payments 
 * Select "Enable ABC plugin", and save then go to payerurl settings
@@ -54,6 +56,9 @@ ABOUT PAYERURL
 
 == Changelog ==
 
+= 1.5.4 =
+Added:
+# readmy description change
 
 = 1.5.3 =
 Added:
@@ -212,6 +217,10 @@ Added:
 
 = 1.3.0 =
 Added: 
+# description change
+
+= 1.3.0 =
+Added: 
 # Notification of api credencials chack before save 
 
 = 1.2.7 =
@@ -280,7 +289,7 @@ Simply install the update. No further action is needed.
 
 == Screenshots ==
 1. Go to your wordpress admin panel login dashboard > click on plugins menu and search "abc crypto checkout". Install and activate by pressing button.
-2. Go to Payerurl Dashboard(https://dashboard.payerurl.com), under sign up menu click on create account. Fill the basic info and complete Registration process.
+2. Go to Payerurl Dashboard(https://dash.payerurl.com), under sign up menu click on create account. Fill the basic info and complete Registration process.
 3. Now, to integrate plugin you must need an API public key and secret key, click on Get API credentials and under there click Generate New API Keys. You will get yourself a unique API public and secret key.
 4. Navigate to your website's admin panel login dashboard > WooCommerce » Settings » Payments, Select "Enable ABC crypto checkout plugin".
 5. Paste the unique API public and secret key and click on test the credentials. You will find a notification like "both API key and secret key found". Now, you are ready to use the Payerurl plugin.
