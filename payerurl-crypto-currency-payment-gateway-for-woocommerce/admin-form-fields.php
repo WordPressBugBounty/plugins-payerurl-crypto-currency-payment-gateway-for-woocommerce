@@ -63,32 +63,11 @@ return array(
         'description' => 'Do you want to add extra fees with item total e.g: subtotal: $100, fee: $1 , Grand total: $101',
         'desc_tip' => true,
     ),
-    'section_advanced_settings_title' => array(
-        'title' => __('Advanced Settings', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
-        'type' => 'title',
-        'class' => ''
-    ),
-    'payerurl_brand_logo' => array(
-        'title' => __('Logo (W:125 H:40, Max:25kb, .png)', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
-        'type' => 'image',
-        'description' => __('Upload a company logo (W:125 H:40), Max:25kb, .png', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
-    ),
     'after_payment_order_status' => array(
         'title' => __('After payment done I want the order status will', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
         'type' => 'select',
         'options' => wc_get_order_statuses(),
         'description' => 'Order status will change automatically to Processing from pending payment, after payment done.',
-        'desc_tip' => true,
-    ),
-    'payerurl_tolerate_amount_type' => array(
-        'title' => __('Tolerate amount type', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
-        'type' => 'select',
-        'options' => ['percentage' => 'Percentage', 'fixed' => 'Fixed'],
-    ),
-    'payerurl_tolerate_amount' => array(
-        'title' => __('Tolerate amount', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
-        'type' => 'text',
-        'description' => 'The tolerate amount is the sum that the consumer is permitted to pay less for any item, but the item order will processing regular way.',
         'desc_tip' => true,
     ),
 );

@@ -1,11 +1,11 @@
 === ABC Crypto Checkout ===
 Contributors: Payerurl team
 Donate link: 
-Tags: Binance, USDT, coinbase, Bitcoin, ethereum, Crypto
+Tags: Binance, USDT, coinbase, Bitcoin, ethereum, TON, USDC
 Requires at least: 5.0
 Tested up to: 6.6.2
 Requires PHP: 7.0
-Stable tag: 1.5.4
+Stable tag: 1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,15 +46,20 @@ ABOUT PAYERURL
 == Installation ==
 
 * Install and activate through the 'Plugins' menu in WordPress.
-* Registraion and login [dash.payerurl.com](https://dash.payerurl.com)
-* Go to Dashboard >> get api credencials >> click on generate
+* Registration and login [dash.payerurl.com](https://dash.payerurl.com)
+* Go to Dashboard >> get api credentials >> click on generate
 * Navigate to WooCommerce » Settings » Payments 
 * Select "Enable ABC plugin", and save then go to payerurl settings
-* Paste your secret key and public key, click on check credencials and save
+* Paste your secret key and public key, click on check credentials and save
 * Your clients can now make payments using crypto.
 
 
 == Changelog ==
+
+= 1.6 =
+Added:
+# disable tollarence amount option
+# disable logo update option
 
 = 1.5.4 =
 Added:
