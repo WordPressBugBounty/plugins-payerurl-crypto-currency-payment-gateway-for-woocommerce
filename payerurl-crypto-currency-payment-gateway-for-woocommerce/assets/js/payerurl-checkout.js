@@ -33,6 +33,7 @@ jQuery(function () {
     function (payment_method) {
       if (!window?.wc?.blocksCheckout) return;
       const { extensionCartUpdate } = wc.blocksCheckout;
+      if(payment_method?.paymentMethodSlug) payment_method['value'] = payment_method.paymentMethodSlug
       extensionCartUpdate({
         namespace: 'payerurl-payment-blocks',
         data: {

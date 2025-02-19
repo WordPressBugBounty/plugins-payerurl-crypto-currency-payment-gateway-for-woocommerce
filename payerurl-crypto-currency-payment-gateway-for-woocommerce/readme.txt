@@ -5,7 +5,7 @@ Tags: Binance, USDT, coinbase, Bitcoin, ethereum, TON, USDC
 Requires at least: 5.0
 Tested up to: 6.6.2
 Requires PHP: 7.0
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -55,6 +55,11 @@ ABOUT PAYERURL
 
 
 == Changelog ==
+
+= 1.7 =
+Added:
+# New Feature "Discount" added
+# react version update
 
 = 1.6 =
 Added:

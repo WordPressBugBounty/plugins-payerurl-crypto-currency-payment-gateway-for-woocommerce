@@ -6,12 +6,24 @@ if (!class_exists("WC_Payerurl")) {
 
     final class WC_Payerurl extends WC_Payment_Gateway
     {
+        public $paymentURL = PAYERURL . '/payment';
+        public $apiVerifyURL = PAYERURL . '/api-secret-key-validation';
+        public $enable_log = false;
+        public $payerurl_public_key = '';
+        public $payerurl_secret_key = '';
+        public $enable_fee_cart = 'no';
+        public $payerurl_fee_title = '';
+        public $payerurl_fee_type = 'percentage';
+        public $payerurl_fee_amount = 0;
+        public $enable_discount_cart = '';
+        public $payerurl_discount_title = '';
+        public $payerurl_discount_type = 'percentage';
+        public $payerurl_discount_amount = 0;
+        public $after_payment_order_status = 'wc-processing';
         public static $logger = null;
 
         public function __construct()
         {
-            $this->paymentURL = PAYERURL . '/payment';
-            $this->apiVerifyURL = PAYERURL . '/api-secret-key-validation';
             $this->id = PAYERURL_ID;
             $this->icon = PAYERURL_URL . 'assets/images/coin_high.png';
             $this->method_title = 'Payerurl';
@@ -40,6 +52,10 @@ if (!class_exists("WC_Payerurl")) {
             $this->payerurl_fee_title = $this->get_option('payerurl_fee_title', '');
             $this->payerurl_fee_type = $this->get_option('payerurl_fee_type', 'percentage');
             $this->payerurl_fee_amount = $this->get_option('payerurl_fee_amount', 0);
+            $this->enable_discount_cart = $this->get_option('enable_discount_cart', 'no');
+            $this->payerurl_discount_title = $this->get_option('payerurl_discount_title', '');
+            $this->payerurl_discount_type = $this->get_option('payerurl_discount_type', 'percentage');
+            $this->payerurl_discount_amount = $this->get_option('payerurl_discount_amount', 0);
             $this->after_payment_order_status = $this->get_option('after_payment_order_status', 'wc-processing');
             $this->order_button_text = __('Proceed to Payerurl', 'ABC-crypto-currency-payment-gateway-for-wooCommerce');
 
@@ -75,7 +91,7 @@ if (!class_exists("WC_Payerurl")) {
             return $status;
         }
 
-        public function add_payerurl_fee(&$cart)
+        public function add_payerurl_fee($cart)
         {
             $session = WC()->session->get('chosen_payment_method');
 
@@ -101,6 +117,34 @@ if (!class_exists("WC_Payerurl")) {
 
             $title = $this->payerurl_fee_title;
             $cart->add_fee($title, $fee, false);
+        }
+
+        public function add_payerurl_discount($cart)
+        {
+            $session = WC()->session->get('chosen_payment_method');
+
+            if (empty($session) || $session != strval(PAYERURL_ID)) return;
+
+            $is_enable_cart = $this->enable_discount_cart;
+            if ($is_enable_cart == 'no' && is_cart()) return;
+
+            $amount = (float)$this->payerurl_discount_amount;
+            if (empty($amount) || !is_numeric($amount) || $amount <= 0) return;
+
+            $type = $this->payerurl_discount_type;
+            switch ($type) {
+                case "percentage":
+                    $discount = ($cart->get_cart_contents_total() + $cart->get_shipping_total()) * ($amount / 100);
+                    break;
+                case "fixed":
+                    $discount = $amount;
+                    break;
+                default:
+                    return;
+            }
+
+            $title = $this->payerurl_discount_title;
+            $cart->add_fee($title, -$discount, false);
         }
 
         public function process_payment($order_id)
@@ -200,7 +244,7 @@ if (!class_exists("WC_Payerurl")) {
                 $input['confirm_rcv_amnt'] >= $order->get_total()
             ) {
                 $order->payment_complete($input['transaction_id']);
-                return wp_send_json(['status' => 2040, 'message' => 'Order updated successfuly']);
+                return wp_send_json(['status' => 2040, 'message' => 'Order updated successfully']);
             } else {
                 $order->update_status('on-hold');
                 return wp_send_json(['status' => 2050, 'message' => 'Order On-Hold due to less amount paid by the customer']);
