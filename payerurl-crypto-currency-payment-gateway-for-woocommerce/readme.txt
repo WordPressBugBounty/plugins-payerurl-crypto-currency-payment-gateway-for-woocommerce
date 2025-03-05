@@ -5,7 +5,7 @@ Tags: Binance, USDT, coinbase, Bitcoin, ethereum, TON, USDC
 Requires at least: 5.0
 Tested up to: 6.6.2
 Requires PHP: 7.0
-Stable tag: 1.7
+Stable tag: 1.7.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,7 +37,7 @@ KEY FEATURES
 🔸	Tested OK with WooCommerce 6.3 or up.
 
 Ecommerce Plugins and Integration
-WooCommerce, PHP , Python, Node, Dhru Fusion 
+WooCommerce, PHP ,Opencart, Python, Node, Dhru Fusion
 
 ABOUT PAYERURL
 [payerurl.com](https://payerurl.com) is a payment processor that allows customers to transfer cryptocurrency payments directly to the merchant wallet. Additionally, merchants can integrate the Binance Pay API, and also can add USDT TRC20, USDT ERC20, ETH ERC20, Bitcoin BTC, TON, USDC ERC20 receiving wallets. We use the current exchange rate to convert any local currency from the merchant’s website, and we give the merchant receiving wallet to the consumer in exchange for the corresponding amount of cryptocurrency.
@@ -55,6 +55,15 @@ ABOUT PAYERURL
 
 
 == Changelog ==
+
+= 1.7.3 =
+Added:
+# Add Opencart name added
+#  icon change
+
+= 1.7.1 =
+Added:
+# Add HPOS
 
 = 1.7 =
 Added:

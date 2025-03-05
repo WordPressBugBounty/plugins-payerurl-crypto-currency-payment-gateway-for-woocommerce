@@ -29,6 +29,9 @@ if (!class_exists("WC_Payerurl")) {
             $this->method_title = 'Payerurl';
             $this->method_description = '<span>ABC Crypto Checkout support all fiat currencies<br>Fast, secure and low cost <br><br><span style="color: blue;">Get your public key and Secret key &nbsp;<a href="https://dash.payerurl.com/register" target="_blank">Click here</a></span></span>';
             $this->has_fields = false;
+            $this->title = $this->get_option('title');
+            $this->description = $this->get_option('description');
+            $this->order_button_text = __('Proceed to Payerurl', 'ABC-crypto-currency-payment-gateway-for-wooCommerce');
             $this->supports = array(
                 'products',
                 'subscriptions',
@@ -44,8 +47,6 @@ if (!class_exists("WC_Payerurl")) {
             $this->init_settings();
 
             $this->enable_log = $this->get_option('enable_log', false);
-            $this->title = $this->get_option('title');
-            $this->description = $this->get_option('description');
             $this->payerurl_public_key = sanitize_text_field($this->get_option('payerurl_public_key', ''));
             $this->payerurl_secret_key = sanitize_text_field($this->get_option('payerurl_secret_key', ''));
             $this->enable_fee_cart = $this->get_option('enable_fee_cart', 'no');
@@ -57,7 +58,6 @@ if (!class_exists("WC_Payerurl")) {
             $this->payerurl_discount_type = $this->get_option('payerurl_discount_type', 'percentage');
             $this->payerurl_discount_amount = $this->get_option('payerurl_discount_amount', 0);
             $this->after_payment_order_status = $this->get_option('after_payment_order_status', 'wc-processing');
-            $this->order_button_text = __('Proceed to Payerurl', 'ABC-crypto-currency-payment-gateway-for-wooCommerce');
 
             if (empty(self::$logger)) self::$logger = wc_get_logger();
 
