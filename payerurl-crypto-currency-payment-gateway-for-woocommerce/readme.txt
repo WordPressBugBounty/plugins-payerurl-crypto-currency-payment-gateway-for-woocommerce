@@ -3,30 +3,42 @@ Contributors: Payerurl team
 Donate link:
 Tags: Binance, USDT, coinbase, Bitcoin, ethereum, TON, USDC
 Requires at least: 5.0
-Tested up to: 6.6.2
+Tested up to: 6.6.8
 Requires PHP: 7.0
-Stable tag: 1.7.4
+Stable tag: 1.7.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
+
+ABC Crypto Checkout is a cryptocurrency payment processor that allows you to receive customer payments directly to your Binance account or crypto wallet, without the need for any intermediary accounts. We support Binance QR code, Binance Pay, and blockchain crypto wallets through the WooCommerce platform.
+== Description ==
+
+ [Live Demo](https://plugin.payerurl.com/shop/) |  [Setup Video](https://payerurl.com/payerurl-woocommerce-plugin-for-merchant-integration/)
+
+
+
 ### Introduction ###
- ABC Crypto plugin is powered by Payerurl. ABC Crypto Checkout is a cryptocurrency payment processor. Merchant/store website owner will receive customer payments direct to their Binance account or blockchain crypto wallets without helping any middleware account. We support Binance C2C, Binance Pay, USDT TRC20, USDC ERC20, USDT ERC20, Bitcoin BTC, Ethereum ERC20, TON coin payment through WooCommerce platform. It will be a good option for you, while you are looking for a Binance payment plugin in WordPress. Payerurl is able to Receive your crypto payments through Binance api and ABC plugin acting as Binance Woocommerce Bridge. This plugin is supported by woocommerce order processing functions so it would be a smoother experience for your users as they never have to leave your store/website to make payments.
+ABC Crypto plugin is powered by Payerurl. ABC Crypto Checkout is a cryptocurrency payment processor. Merchant/store/website owner will receive customer payments direct to their crypto wallets without helping any middleware account. We support Binance QR code payment through WooCommerce so it would be a smoother experience for your users as they never have to leave your store/website to make payments.
 
-The ABC plugin converts any Fiat currency to USDT, USDC, ETH, BTC, TON coin etc  at the time of the transaction with a live exchange rate to pay the user online, and once payment is complete instantly credits to the merchant’s account and also provides a response to the merchant store/website payment information through API for the change Order status to "processing".
 
-In payerurl dashboard merchant/store website owner can add their binance personal/merchant account using Binance API, so that merchant/store website owner can start receiving customer payment directly to their own binance personal/merchant account.
+BINANCE QR CODE PAYMENT
+It will be a good option for you, while you are looking for a Binance payment plugin in WordPress. Binance Payments is a secure, contactless, and borderless payment solution. With the ABC Crypto Checkout feature, you can accept payments via Binance QR codes and receive crypto payments through the Binance personal account API. The ABC plugin serves as a bridge between Binance and WooCommerce, enabling seamless transactions. Customers simply scan your provided Binance QR code on the payment page and complete their payment. This process is fast, simple, and incurs no network fees or additional costs. The solution offers significant advantages, such as enhanced security to avoid scams and ensuring safe transactions. It streamlines the process, making transactions faster, more secure, and cost-effective.
+
+
+HOW THIS PLUGIN WORKS
+The ABC plugin converts any Fiat currency to crypto coin with a live exchange rate to pay the user online. Once payment is complete; money instantly credits to the merchant’s account and also provides a response to the merchant store/website payment information through API for the change Order status to “processing”
 
 
 KEY FEATURES
-🔸	Binance C2C,Binance Pay, USDT TRC20,USDT ERC20,USDC ERC20,Bitcoin BTC, ETH ERC20, TON coin blockchain network supported
+🔸	Binance QR payment,Binance Pay,USDT TRC20,USDT ERC20,USDC ERC20,Bitcoin BTC, ETH ERC20, TON coin blockchain network supported
 🔸	169+ fiat currencies [FIAT CURRENCY LIST](https://payerurl.com/fiat-to-crypto-exchange/) including USD, CAD, GBP, and EUR. etc including real-time exchange rate. (View the current exchange rate at: payerurl.com Exchange Rate (LIVE)).
 🔸	100% Free Open Source Plug-in on.
 🔸	No Bank Account Needed or no personal identity as mandatory
 🔸	Easy signup, registration, and API key integration
 🔸	No KYC on withdraw for free account(Basic account).
 🔸	24/7 customer support in the integration of ABC Crypto checkout contact us telegram: [https://t.me/Payerurl](https://t.me/Payerurl)
-🔸	Tested OK with WooCommerce 6.6 or up.
+🔸	Tested OK with WooCommerce 6.5 or up.
 
 
 Ecommerce Plugins and Integration
@@ -49,14 +61,18 @@ ABOUT PAYERURL
 
 == Changelog ==
 
+= 1.7.5 =
+Added:
+# No more support currency "BDT"
+
 = 1.7.4 =
 Added:
-# Add Binance C2C added
+# Add Binance QR payment added
 
 = 1.7.3 =
 Added:
 # Add Opencart name added
-#  icon change
+# Icon change
 
 = 1.7.1 =
 Added:

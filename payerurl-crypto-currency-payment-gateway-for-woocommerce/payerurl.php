@@ -6,14 +6,14 @@
  * Author: payerurl team
  * Author URI: https://payerurl.com
  * Description: ABC Crypto Checkout is a cryptocurrency payment processor that allows customers to transfer crypto payments directly to the merchant wallet. Merchants can integrate the Binance Pay API, and also can add USDT TRC20, USDT ERC20, ETH ERC20, Bitcoin BTC, TON, USDC ERC20 receiving wallets.
- * Version:1.7.4
+ * Version:1.7.5
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: ABC-crypto-currency-payment-gateway-for-wooCommerce
  * Domain Path: https://payerurl.com
  * Requires Plugins: woocommerce
  * WC requires at least: 5.5
- * WC tested up to: 9.6
+ * WC tested up to: 9.9.5
  */
 
 
@@ -21,7 +21,7 @@ if (!defined('WPINC')) die("Direct Access Not Allowed");
 if (!class_exists('Payerurl')) {
     final class Payerurl
     {
-        const version = "1.7.4";
+        const version = "1.7.5";
         protected static $_instance = NULL;
         private $valid_currencies = [];
 
@@ -286,7 +286,7 @@ if (!function_exists('get_valid_currencies')) {
     function payerurl_get_valid_currencies()
     {
         return [
-            "USD", "AED", "ARS", "AUD", "BDT", "BHD", "BRL", "CAD", "COP", "CLP", "CNY", "CZK", "EUR", "GBP", "HKD", "IDR", "INR", "JPY", "KRW", "KWD", "LKR", "MMK", "MXN", "MYR", "NGN", "PHP", "PKR", "PLN", "PYG", "RUB", "SAR", "SEK", "SGD", "THB", "TRY", "TWD", "UAH", "VND", "ZAR", "BTC", "ETH", "LTC", "BCH", "BNB", "XRP", "XLM", "DOT", "XDR", "EOS", "LINK", "YFI", "XAG", "XAU", "BITS", "SATS", "USDT", "FJD", "LVL", "SCR", "CDF", "BBD", "HNL", "UGX", "SDG", "IQD", "GMD", "FKP", "XOF", "GNF", "MZN", "QAR", "IRR", "LYD", "ISK", "PAB", "CHF", "HRK", "DJF", "KYD", "SHP", "TJS", "DKK", "BGN", "ZWL", "HTG", "KZT", "AFN", "HUF", "BIF", "NAD", "SKK", "TMM", "GTQ", "TND", "SLL", "DOP", "MAD", "PGK", "ERN", "BMD", "ETB", "SOS", "LAK", "BND", "BOB", "MDL", "AMD", "LBP", "RON", "CRC", "TTD", "NIO", "PNG", "CUC", "BSD", "CUP", "RSD", "UYU", "OMR", "KES", "BTN", "SVC", "UZS", "MKD", "DZD", "LIT", "XAF", "TZS", "KHR", "BWP", "RWF", "NOK", "SYP", "XCD", "SZL", "YER", "NPR", "MNT", "BYR", "BZD", "MOP", "KMF", "GEL", "AZN", "UAH", "MRU", "JMD", "GGP", "VEF", "LRD", "MTL", "VES", "ZMW", "ILS", "ILV", "GHS", "KPW", "JOD", "GUSD", "LSL", "EEK", "MUR", "IMP", "GIP", "LTL", "MVR", "SBD", "MWK", "EGP", "NZD"
+            "USD", "AED", "ARS", "AUD", "BHD", "BRL", "CAD", "COP", "CLP", "CNY", "CZK", "EUR", "GBP", "HKD", "IDR", "INR", "JPY", "KRW", "KWD", "LKR", "MMK", "MXN", "MYR", "NGN", "PHP", "PKR", "PLN", "PYG", "RUB", "SAR", "SEK", "SGD", "THB", "TRY", "TWD", "UAH", "VND", "ZAR", "BTC", "ETH", "LTC", "BCH", "BNB", "XRP", "XLM", "DOT", "XDR", "EOS", "LINK", "YFI", "XAG", "XAU", "BITS", "SATS", "USDT", "FJD", "LVL", "SCR", "CDF", "BBD", "HNL", "UGX", "SDG", "IQD", "GMD", "FKP", "XOF", "GNF", "MZN", "QAR", "IRR", "LYD", "ISK", "PAB", "CHF", "HRK", "DJF", "KYD", "SHP", "TJS", "DKK", "BGN", "ZWL", "HTG", "KZT", "AFN", "HUF", "BIF", "NAD", "SKK", "TMM", "GTQ", "TND", "SLL", "DOP", "MAD", "PGK", "ERN", "BMD", "ETB", "SOS", "LAK", "BND", "BOB", "MDL", "AMD", "LBP", "RON", "CRC", "TTD", "NIO", "PNG", "CUC", "BSD", "CUP", "RSD", "UYU", "OMR", "KES", "BTN", "SVC", "UZS", "MKD", "DZD", "LIT", "XAF", "TZS", "KHR", "BWP", "RWF", "NOK", "SYP", "XCD", "SZL", "YER", "NPR", "MNT", "BYR", "BZD", "MOP", "KMF", "GEL", "AZN", "UAH", "MRU", "JMD", "GGP", "VEF", "LRD", "MTL", "VES", "ZMW", "ILS", "ILV", "GHS", "KPW", "JOD", "GUSD", "LSL", "EEK", "MUR", "IMP", "GIP", "LTL", "MVR", "SBD", "MWK", "EGP", "NZD"
         ];
     }
 }
