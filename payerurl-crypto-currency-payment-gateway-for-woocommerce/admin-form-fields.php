@@ -44,6 +44,10 @@ return array(
         'description' => 'Order status will change automatically to Processing from pending payment, after payment done.',
         'desc_tip' => true,
     ),
+    'enable_pay_later' => array(
+        'title' => __('Enable Pay later', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
+        'type' => 'checkbox',
+    ),
     'section_fee_settings_title' => array(
         'title' => __('Fee Settings', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
         'type' => 'title',

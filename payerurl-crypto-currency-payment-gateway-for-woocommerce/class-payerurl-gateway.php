@@ -11,6 +11,7 @@ if (!class_exists("WC_Payerurl")) {
         public $enable_log = false;
         public $payerurl_public_key = '';
         public $payerurl_secret_key = '';
+        public $enable_pay_later = 'no';
         public $enable_fee_cart = 'no';
         public $payerurl_fee_title = '';
         public $payerurl_fee_type = 'percentage';
@@ -49,6 +50,7 @@ if (!class_exists("WC_Payerurl")) {
             $this->enable_log = $this->get_option('enable_log', false);
             $this->payerurl_public_key = sanitize_text_field($this->get_option('payerurl_public_key', ''));
             $this->payerurl_secret_key = sanitize_text_field($this->get_option('payerurl_secret_key', ''));
+            $this->enable_pay_later = $this->get_option('enable_pay_later', 'no');
             $this->enable_fee_cart = $this->get_option('enable_fee_cart', 'no');
             $this->payerurl_fee_title = $this->get_option('payerurl_fee_title', '');
             $this->payerurl_fee_type = $this->get_option('payerurl_fee_type', 'percentage');
@@ -239,9 +241,14 @@ if (!class_exists("WC_Payerurl")) {
                 true
             );
 
+            if ($this->enable_pay_later == 1 && $input['status_code'] === 200) {
+                $order->payment_complete($input['transaction_id']);
+                return wp_send_json(['status' => 2040, 'message' => '[Pay later] Order updated successfully']);
+            }
+             // allow at least 90% payment
             if (
                 $input['status_code'] === 200 && $input['coin_rcv_amnt'] != 0 &&
-                $input['confirm_rcv_amnt'] >= $order->get_total()
+                $input['confirm_rcv_amnt'] >= ($order->get_total() * 0.9)
             ) {
                 $order->payment_complete($input['transaction_id']);
                 return wp_send_json(['status' => 2040, 'message' => 'Order updated successfully']);
