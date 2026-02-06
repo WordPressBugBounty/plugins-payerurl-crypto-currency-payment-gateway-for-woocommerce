@@ -3,9 +3,9 @@ Contributors: Payerurl team
 Donate link:
 Tags: Binance, USDT, coinbase, Bitcoin, ethereum, TON, USDC
 Requires at least: 5.0
-Tested up to: 6.6.8
+Tested up to: 6.9
 Requires PHP: 7.0
-Stable tag: 1.7.6
+Stable tag: 1.7.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,6 +60,11 @@ ABOUT PAYERURL
 
 
 == Changelog ==
+
+= 1.7.7 =
+Added:
+# Order status set to processing if at least 90% of payment is received automatically.
+# Added pay later option.
 
 = 1.7.6 =
 Added:
@@ -325,15 +330,16 @@ Simply install the update. No further action is needed.
 
 
 == Screenshots ==
-1. Go to your wordpress admin panel login dashboard > click on plugins menu and search "abc crypto checkout". Install and activate by pressing button.
-2. Go to Payerurl Dashboard(https://dash.payerurl.com), under sign up menu click on create account. Fill the basic info and complete Registration process.
-3. Now, to integrate plugin you must need an API public key and secret key, click on Get API credentials and under there click Generate New API Keys. You will get yourself a unique API public and secret key.
-4. Navigate to your website's admin panel login dashboard > WooCommerce » Settings » Payments, Select "Enable ABC crypto checkout plugin".
-5. Paste the unique API public and secret key and click on test the credentials. You will find a notification like "both API key and secret key found". Now, you are ready to use the Payerurl plugin.
-6. The customer places an order from your website. To proceed to checks out customer use ABC Crypto Checkout payment gateway to pay his/her preferred amount equivalent crypto. 
-7. Customer has to click on his/her desired payment networks to proceed.
-8. A new window pop-up with QR code generate in customers screen. This QR code included with payment invoice and payment description. Customer scans the QR code or copies the code address from his/her device and make a payment.
-9. The transaction will automatically approved by payerurl.com after the blockchain network confirmation. The customer will see a confirmation screen with payment receive receipt that includes unique transaction Id and real hash link.
-10. After successful payment a customer note will be added in the order details page in merchant website.
+1. Please visit dash.payerurl.com to complete your registration.
+2. Generate your API keys and link them to ABC Crypto Checkout and PayerURL (payerurl.com) to start accepting payments.
+3. Paste the API keys you generated on payerurl.com into your plugin settings: WooCommerce → Settings → Payments → Manage → Payerurl API Credentials.
+   Then click Test credentials. If everything is correct, you’ll see a green message: “Both API key and secret key found. Saving credentials…”.
+4. After you add your receiving wallet and correctly set up your Binance user account API, the payment page will appear on your product checkout payment request.
+5. Binance C2C Payment.
+6. USDC payment page (demo).
+7. USDT payment page (demo).
+8. Payment receive confirmation (demo).
+9. Payment confirmation email (demo).
+10. Payerurl dashboard.
 11. Merchant will also receive an email notification with payment details.
 12. At the same time crypto amount will be deposited to the merchants account also listed in transaction history page.
