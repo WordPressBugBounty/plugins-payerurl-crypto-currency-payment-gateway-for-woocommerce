@@ -1,11 +1,11 @@
 === ABC Crypto Checkout ===
 Contributors: Payerurl team
 Donate link:
-Tags: Binance, USDT, coinbase, Bitcoin, ethereum, TON, USDC
+Tags: Binance, USDT, coinbase, Bitcoin, ethereum, crypto, USDC
 Requires at least: 5.0
-Tested up to: 6.9
+Tested up to: 6.9.1
 Requires PHP: 7.0
-Stable tag: 1.7.7
+Stable tag: 1.7.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,11 +38,11 @@ KEY FEATURES
 🔸	Easy signup, registration, and API key integration
 🔸	No KYC on withdraw for free account(Basic account).
 🔸	24/7 customer support in the integration of ABC Crypto checkout contact us telegram: [https://t.me/Payerurl](https://t.me/Payerurl)
-🔸	Tested OK with WooCommerce 6.5 or up.
+🔸	Tested OK with WooCommerce 6.9.1 or up.
 
 
 Ecommerce Plugins and Integration
-WooCommerce ,Opencart, PHP, Python, Node, Dhru Fusion
+WooCommerce ,Opencart, PHP, Python, Node, Dhru Fusion, Laravel
 
 ABOUT PAYERURL
 [payerurl.com](https://payerurl.com) is a payment processor that allows customers to transfer cryptocurrency payments directly to the merchant wallet. Additionally, merchants can integrate the Binance personal/merchant API, and also can add USDT TRC20, USDT ERC20, ETH ERC20, Bitcoin BTC, TON, USDC ERC20 receiving wallets. We use the current exchange rate to convert any local currency from the merchant’s website, and we give the merchant receiving wallet to the consumer in exchange for the corresponding amount of cryptocurrency.
@@ -60,6 +60,10 @@ ABOUT PAYERURL
 
 
 == Changelog ==
+
+= 1.7.7 =
+Added:
+# Supported currencies change.
 
 = 1.7.7 =
 Added:

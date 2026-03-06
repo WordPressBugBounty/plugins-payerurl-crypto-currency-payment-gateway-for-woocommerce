@@ -6,14 +6,14 @@
  * Author: payerurl team
  * Author URI: https://payerurl.com
  * Description: ABC Crypto Checkout is a cryptocurrency payment processor that allows customers to transfer crypto payments directly to the merchant wallet. Merchants can integrate the Binance Pay API, and also can add USDT TRC20, USDT ERC20, ETH ERC20, Bitcoin BTC, TON, USDC ERC20 receiving wallets.
- * Version:1.7.7
+ * Version:1.7.8
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: ABC-crypto-currency-payment-gateway-for-wooCommerce
  * Domain Path: https://payerurl.com
  * Requires Plugins: woocommerce
  * WC requires at least: 5.5
- * WC tested up to: 9.9.5
+ * WC tested up to: 6.9.1
  */
 
 
@@ -21,7 +21,7 @@ if (!defined('WPINC')) die("Direct Access Not Allowed");
 if (!class_exists('Payerurl')) {
     final class Payerurl
     {
-        const version = "1.7.7";
+        const version = "1.7.8";
         protected static $_instance = NULL;
         private $valid_currencies = [];
 
