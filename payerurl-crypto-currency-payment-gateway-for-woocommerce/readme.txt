@@ -5,7 +5,7 @@ Tags: Binance, USDT, coinbase, Bitcoin, ethereum, crypto, USDC
 Requires at least: 5.0
 Tested up to: 6.9.1
 Requires PHP: 7.0
-Stable tag: 1.7.9
+Stable tag: 1.8.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -60,6 +60,10 @@ ABOUT PAYERURL
 
 
 == Changelog ==
+
+= 1.8.0 =
+Added:
+# japanese language update.
 
 = 1.7.9 =
 Added:
