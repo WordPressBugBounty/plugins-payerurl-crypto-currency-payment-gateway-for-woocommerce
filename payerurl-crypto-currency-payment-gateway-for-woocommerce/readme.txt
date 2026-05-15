@@ -1,357 +1,391 @@
 === ABC Crypto Checkout ===
 Contributors: Payerurl team
 Donate link:
-Tags: Binance, USDT, coinbase, Bitcoin, ethereum, crypto, USDC
+Tags: Binance, USDT, Bitcoin, Ethereum, crypto payment gateway, USDC, Coinbase, XRP, Solana, XPUB wallet, WooCommerce crypto, blockchain payment, cryptocurrency checkout, DeFi payment, Web3 payment
 Requires at least: 5.0
-Tested up to: 6.9.1
+Tested up to: 6.9.4
 Requires PHP: 7.0
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
 
-ABC Crypto Checkout is a cryptocurrency payment processor that allows you to receive customer payments directly to your Binance account or crypto wallet, without the need for any intermediary accounts. We support Binance QR code, Binance Pay, and blockchain crypto wallets through the WooCommerce platform.
+ABC Crypto Checkout is a powerful cryptocurrency payment gateway for WooCommerce that lets you accept Bitcoin, Ethereum, USDT, USDC, Binance Pay, and 10+ cryptocurrencies directly into your own wallet — no intermediaries, no KYC required. Now featuring XPUB-powered unlimited wallet rotation for high-volume merchants.
+
 == Description ==
 
- [Live Demo](https://plugin.payerurl.com/shop/) |  [Setup Video](https://payerurl.com/payerurl-woocommerce-plugin-for-merchant-integration/)
-
+[Live Demo](https://plugin.payerurl.com/shop/) | [Setup Video](https://payerurl.com/payerurl-woocommerce-plugin-for-merchant-integration/)
 
 
 ### Introduction ###
-ABC Crypto plugin is powered by Payerurl. ABC Crypto Checkout is a cryptocurrency payment processor. Merchant/store/website owner will receive customer payments direct to their crypto wallets without helping any middleware account. We support Binance QR code payment through WooCommerce so it would be a smoother experience for your users as they never have to leave your store/website to make payments.
+ABC Crypto Checkout — powered by Payerurl — is a non-custodial cryptocurrency payment gateway that connects WooCommerce directly to your crypto wallets. Whether you accept Bitcoin (BTC), Ethereum (ETH), USDT TRC20, USDT ERC20, USDC ERC20, Binance Pay, TON, or other major cryptocurrencies, payments land in your wallet instantly with zero middlemen. Now with XPUB (Extended Public Key) support, you can auto-rotate through unlimited receiving addresses — ideal for high-volume stores, crypto exchanges, and enterprise merchants.
+
+### BINANCE PAY & BINANCE QR CODE PAYMENT ###
+Looking for a Binance payment plugin for WordPress? ABC Crypto Checkout offers native Binance Pay and Binance QR code integration — the fastest, most secure contactless payment method for crypto-native customers. Customers scan your Binance QR code directly on your checkout page without ever leaving your store. Zero network fees. Zero friction.
+
+Binance Pay features:
+- Instant settlement to your Binance account
+- No additional network or gas fees
+- Supports Binance personal and merchant API
+- Secure, borderless, contactless payments
+
+### XPUB WALLET INTEGRATION — UNLIMITED ADDRESS ROTATION ###
+The most advanced feature for serious crypto merchants. By adding your XPUB (Extended Public Key) — also known as xPub, ypub, or zpub — ABC Crypto Checkout automatically generates a fresh, unique Bitcoin or cryptocurrency wallet address for every order. This means:
+
+🔐 **Maximum Privacy** — No address reuse; every transaction gets its own blockchain address, protecting both merchant and customer privacy.
+♾️ **Unlimited Scale** — Handle thousands of simultaneous transactions without wallet conflicts. Perfect for high-volume e-commerce, crypto marketplaces, and enterprise stores.
+🤖 **Fully Automated** — No manual wallet management. Addresses are derived from your XPUB key on the fly, so funds always go directly to your hardware wallet or cold storage.
+✅ **Non-Custodial** — Your XPUB key is read-only. ABC Crypto Checkout never has access to your private keys or funds.
+📦 **Batch & Mass Payment Ready** — Supports mass-volume transaction processing without rate limits or address collisions.
+
+Supported XPUB formats: BTC (xpub/ypub/zpub), ETH, and other HD wallet derivation paths.
 
 
-BINANCE QR CODE PAYMENT
-It will be a good option for you, while you are looking for a Binance payment plugin in WordPress. Binance Payments is a secure, contactless, and borderless payment solution. With the ABC Crypto Checkout feature, you can accept payments via Binance QR codes and receive crypto payments through the Binance personal account API. The ABC plugin serves as a bridge between Binance and WooCommerce, enabling seamless transactions. Customers simply scan your provided Binance QR code on the payment page and complete their payment. This process is fast, simple, and incurs no network fees or additional costs. The solution offers significant advantages, such as enhanced security to avoid scams and ensuring safe transactions. It streamlines the process, making transactions faster, more secure, and cost-effective.
+### HOW THE PLUGIN WORKS ###
+ABC Crypto Checkout converts any fiat currency (USD, EUR, GBP, JPY, CAD, AUD, and 160+ more) to the customer's chosen cryptocurrency using a live exchange rate. Once the blockchain payment or Binance Pay transaction is confirmed, funds are credited instantly to your wallet and your WooCommerce order status is updated to "Processing" automatically via API webhook — no manual steps required.
 
 
-HOW THIS PLUGIN WORKS
-The ABC plugin converts any Fiat currency to crypto coin with a live exchange rate to pay the user online. Once payment is complete; money instantly credits to the merchant’s account and also provides a response to the merchant store/website payment information through API for the change Order status to “processing”
+### SUPPORTED CRYPTOCURRENCIES ###
+🔸 **Bitcoin (BTC)** — The world's #1 cryptocurrency
+🔸 **Ethereum (ETH ERC20)** — The leading smart contract blockchain
+🔸 **USDT TRC20** — Tether on TRON (ultra-low fees)
+🔸 **USDT ERC20** — Tether on Ethereum
+🔸 **USDC ERC20** — USD Coin, the trusted stablecoin
+🔸 **Binance Pay** — Instant Binance account payments
+🔸 **Binance QR Code** — Contactless Binance scan-to-pay
+🔸 **TON Coin** — The Open Network blockchain
+🔸 **XPUB Wallet Addresses** — Auto-rotating HD wallet addresses for unlimited transactions
 
 
-KEY FEATURES
-🔸	Binance QR payment,Binance Pay,USDT TRC20,USDT ERC20,USDC ERC20,Bitcoin BTC, ETH ERC20, TON coin blockchain network supported
-🔸	169+ fiat currencies [FIAT CURRENCY LIST](https://payerurl.com/fiat-to-crypto-exchange/) including USD, CAD, GBP, and EUR. etc including real-time exchange rate. (View the current exchange rate at: payerurl.com Exchange Rate (LIVE)).
-🔸	100% Free Open Source Plug-in on.
-🔸	No Bank Account Needed or no personal identity as mandatory
-🔸	Easy signup, registration, and API key integration
-🔸	No KYC on withdraw for free account(Basic account).
-🔸	24/7 customer support in the integration of ABC Crypto checkout contact us telegram: [https://t.me/Payerurl](https://t.me/Payerurl)
-🔸	Tested OK with WooCommerce 6.9.1 or up.
+### KEY FEATURES ###
+🔸 **XPUB Unlimited Wallet Integration** — Auto-generate unique addresses per order for mass-volume transactions
+🔸 **10+ Crypto Networks** — Bitcoin BTC, Ethereum ETH, USDT TRC20, USDT ERC20, USDC ERC20, Binance Pay, Binance QR, TON, and more
+🔸 **169+ Fiat Currencies** — USD, EUR, GBP, JPY, CAD, AUD, INR, and more with [real-time exchange rates](https://payerurl.com/fiat-to-crypto-exchange/)
+🔸 **Non-Custodial & Trustless** — Funds go straight to your wallet; we never hold your crypto
+🔸 **No KYC Required** — No identity verification for the Basic (free) plan
+🔸 **No Bank Account Needed** — Accept crypto payments without any traditional banking setup
+🔸 **100% Free & Open Source Plugin** — No hidden fees on the plugin itself
+🔸 **WooCommerce Blocks Compatible** — Fully supports modern WooCommerce checkout blocks
+🔸 **HPOS (High-Performance Order Storage) Compatible** — Ready for WooCommerce's latest order management system
+🔸 **Pay Later Option** — Flexible payment timing for customers
+🔸 **Auto Partial Payment Handling** — Order marked as Processing when ≥90% of payment is received
+🔸 **Discount Feature** — Offer crypto-specific discounts to incentivize on-chain payments
+🔸 **Live Exchange Rate** — Real-time crypto/fiat conversion at checkout
+🔸 **DeFi & Web3 Ready** — Supports wallet-to-wallet payments for Web3-native customers
+🔸 **Easy API Key Setup** — One-click credential check and save
+🔸 **24/7 Support** via Telegram: [https://t.me/Payerurl](https://t.me/Payerurl)
+🔸 **Tested with WooCommerce 6.9.1 and above**
 
 
-Ecommerce Plugins and Integration
-WooCommerce ,Opencart, PHP, Python, Node, Dhru Fusion, Laravel
+### SUPPORTED E-COMMERCE PLATFORMS ###
+WooCommerce, OpenCart, PHP, Python, Node.js, Dhru Fusion, Laravel
 
-ABOUT PAYERURL
-[payerurl.com](https://payerurl.com) is a payment processor that allows customers to transfer cryptocurrency payments directly to the merchant wallet. Additionally, merchants can integrate the Binance personal/merchant API, and also can add USDT TRC20, USDT ERC20, ETH ERC20, Bitcoin BTC, TON, USDC ERC20 receiving wallets. We use the current exchange rate to convert any local currency from the merchant’s website, and we give the merchant receiving wallet to the consumer in exchange for the corresponding amount of cryptocurrency.
+
+### ABOUT PAYERURL ###
+[payerurl.com](https://payerurl.com) is a non-custodial cryptocurrency payment processor that routes payments directly from customers to merchant wallets. Merchants can connect Binance personal/merchant API, add XPUB keys for unlimited HD wallet address generation, or manually configure USDT TRC20, USDT ERC20, ETH ERC20, Bitcoin BTC, TON, and USDC ERC20 receiving wallets. We apply real-time market exchange rates so your customers always pay the correct crypto equivalent of your local fiat price.
 
 
 == Installation ==
 
 * Install and activate through the 'Plugins' menu in WordPress.
-* Registration and login [dash.payerurl.com](https://dash.payerurl.com)
-* Go to Dashboard >> get api credentials >> click on generate
+* Register and log in at [dash.payerurl.com](https://dash.payerurl.com)
+* Go to Dashboard >> Get API Credentials >> Click Generate
 * Navigate to WooCommerce » Settings » Payments
-* Select "Enable ABC plugin", and save then go to payerurl settings
-* Paste your secret key and public key, click on check credentials and save
-* Your clients can now make payments using crypto.
+* Enable "ABC Crypto Checkout" and save, then go to Payerurl settings
+* Paste your Secret Key and Public Key, click "Check Credentials" and save
+* (Optional) Add your XPUB key in the wallet settings for unlimited address rotation
+* Your customers can now pay with Bitcoin, Ethereum, USDT, USDC, Binance Pay, and more
 
 
 == Changelog ==
 
+= 1.8.2 =
+Added:
+# XPUB (Extended Public Key) wallet integration for unlimited address for all coin.
+
+= 1.8.1 =
+Added:
+# XPUB (Extended Public Key) wallet integration for unlimited address generation.
+# Mass-volume transaction support via HD wallet derivation.
+# Improved multi-address rotation for high-volume merchants.
+
 = 1.8.0 =
 Added:
-# japanese language update.
+# Japanese language update.
 
 = 1.7.9 =
 Added:
-# japanese language added.
+# Japanese language added.
 
 = 1.7.8 =
 Added:
-# Supported currencies change.
+# Supported currencies update.
 
 = 1.7.7 =
 Added:
-# Order status set to processing if at least 90% of payment is received automatically.
-# Added pay later option.
+# Order status set to Processing if at least 90% of payment is received automatically.
+# Added Pay Later option.
 
 = 1.7.6 =
 Added:
-# Order status set to processing if at least 90% of payment is received automatically.
-# Added pay later option.
+# Order status set to Processing if at least 90% of payment is received automatically.
+# Added Pay Later option.
 
 = 1.7.5 =
 Added:
-# No more support currency "BDT"
+# Removed support for currency "BDT".
 
 = 1.7.4 =
 Added:
-# Add Binance QR payment added
+# Binance QR payment added.
 
 = 1.7.3 =
 Added:
-# Add Opencart name added
-# Icon change
+# OpenCart name added.
+# Icon change.
 
 = 1.7.1 =
 Added:
-# Add HPOS
+# HPOS (High-Performance Order Storage) support.
 
 = 1.7 =
 Added:
-# New Feature "Discount" added
-# react version update
+# New "Discount" feature added.
+# React version update.
 
 = 1.6 =
 Added:
-# disable tollarence amount option
-# disable logo update option
+# Disable tolerance amount option.
+# Disable logo update option.
 
 = 1.5.4 =
 Added:
-# readmy description change
+# Readme description update.
 
 = 1.5.3 =
 Added:
-# error notification change
+# Error notification update.
 
 = 1.5.1 =
 Added:
-# api url change for registration
-
-= 1.5.1 =
-Added:
-# api version 2 supported
+# API URL change for registration.
+# API version 2 support.
 
 = 1.5.0 =
-Added: 
-# added support for woocommerce blocks
+Added:
+# Support for WooCommerce Blocks.
 
 = 1.4.5 =
-Added: 
-# Updated uninstallation hook
+Added:
+# Updated uninstallation hook.
 
 = 1.4.4 =
-Added: 
-# Tested up to wordpress v 1,4.1
+Added:
+# Tested up to WordPress 6.4.1.
 
 = 1.4.1 =
-Added: 
-# Security feature update on server side
+Added:
+# Security feature update (server side).
 
 = 1.4 =
-Added: 
-# Fee Settings applied specifically for this plugin; they won't affect any other plugins
+Added:
+# Fee settings scoped specifically to this plugin; no impact on other plugins.
 
 = 1.3.3 =
-Added: 
-# Security feature added
+Added:
+# Security feature added.
 
 = 1.3.1 =
-Added: 
-# API check and auto save added 
+Added:
+# API check and auto-save added.
 
 = 1.3.0 =
-Added: 
-# Notification of api credencials chack before save 
+Added:
+# Notification of API credentials check before save.
 
 = 1.2.8 =
-Added: 
-# contact address added on error.
-
+Added:
+# Contact address added on error pages.
 
 = 1.2.7 =
-Added: 
-# Live Demo added.
+Added:
+# Live Demo link added.
 
 = 1.2.5 =
-Added: 
-# security feature added server end.
+Added:
+# Server-side security feature added.
 
 = 1.2.4 =
-Added: 
+Added:
 # API credentials check validation optimization.
 
 = 1.2.3 =
-Added: 
-# Added a feature of pre check API credentials.
+Added:
+# Pre-check API credentials feature added.
 
 = 1.2.2 =
-Added: 
-# security update on and api check before payment request
+Added:
+# Security update and API check before payment request.
 
 = 1.1.9 =
-Added: 
-# solve $_SERVER['HTTP_AUTHORIZATION'] issue for some merchants hosting 
-
+Added:
+# Resolved $_SERVER['HTTP_AUTHORIZATION'] issue for certain merchant hosting environments.
 
 = 1.1.7 =
-Added: 
-# Signature doesn't match with all input return.
+Added:
+# Signature mismatch fix — returns all inputs on failure.
 
 = 1.1.6 =
-Added: 
-# Remove the unnecessary email notification from the "cancel and return" button on the payment page.
-
+Added:
+# Removed unnecessary email notification triggered by "Cancel and Return" button on payment page.
 
 = 1.1.5 =
-Added: 
-# Before enabling this payment method option on the checkout page, 
-check the store currency with our list of accepted currencies.
-# Enable log management 
+Added:
+# Store currency validation against accepted currency list before enabling payment method.
+# Log management enabled.
 
 = 1.1.4 =
-Added: 
-# request trace log added in the receiver page
+Added:
+# Request trace log added on receiver page.
 
 = 1.1.3 =
-Added: 
-# Registration process change.
+Added:
+# Registration process updated.
 
 = 1.1.2 =
-Added: 
-# error code added on ever request or failed request.
-# error code added on ever response or failed response.
+Added:
+# Error codes added on all requests and failed requests.
+# Error codes added on all responses and failed responses.
 
 = 1.1.1 =
-Added: 
-# After payment customer can choose status.
-# Item description added
+Added:
+# Customers can choose order status after payment.
+# Item description added.
 
 = 1.1.0 =
-Added: 
-# Default select "processing" for after_payment_order_status
+Added:
+# Default order status after payment set to "Processing".
 
 = 1.0.9 =
-Added: 
-# Media upload problem solve
-
+Added:
+# Media upload issue resolved.
 
 = 1.0.8 =
-Added: 
-# Brand logo update through plugin
-# Transaction details added
-
+Added:
+# Brand logo update via plugin.
+# Transaction details added.
 
 = 1.0.7 =
-Added: 
-# External fee system added
-# Tolerance system added
+Added:
+# External fee system added.
+# Tolerance system added.
 
 = 1.0.6 =
-Added: 
-# Hash link change
-# Binance Pay added
-# Banner change
+Added:
+# Hash link updated.
+# Binance Pay added.
+# Banner updated.
 
 = 1.0.5 =
-
-Added: 
-#Api link added.
-#banner change
-#title change
+Added:
+# API link added.
+# Banner and title updated.
 
 = 1.0.4 =
-Added: 
-#get api key link added.
-#icon change
+Added:
+# Get API key link added.
+# Icon updated.
 
 = 1.0.3 =
-Added: 
-#New coin added
-#icon change
-
-
+Added:
+# New coins added.
+# Icon updated.
 
 
 == Upgrade Notice ==
 
-= 1.3.0 =
-Added: 
-# description change
+= 1.8.1 =
+Added:
+# XPUB wallet support for unlimited address rotation and mass-volume transaction processing.
 
 = 1.3.0 =
-Added: 
-# Notification of api credencials chack before save 
+Added:
+# Notification of API credentials check before save.
 
 = 1.2.7 =
-Added: 
-# contact address added on error.
+Added:
+# Contact address added on error pages.
 
 = 1.2.3 =
-Added: 
-# Added a feature of pre check API credentials.
+Added:
+# Pre-check API credentials feature added.
 
 = 1.2.2 =
-Added: 
-# security update on and api check before payment request
+Added:
+# Security update and API check before payment request.
 
 = 1.1.9 =
-Added: 
-# solve $_SERVER['HTTP_AUTHORIZATION'] issue for some merchants hosting 
+Added:
+# Resolved $_SERVER['HTTP_AUTHORIZATION'] issue for certain merchant hosting environments.
 
 = 1.1.6 =
-Added: 
-# Remove the unnecessary email notification from the "cancel and return" button on the payment page.
+Added:
+# Removed unnecessary email notification from "Cancel and Return" button on payment page.
 
 = 1.1.5 =
-Added: 
-# Before enabling this payment method option on the checkout page, 
-check the store currency with our list of accepted currencies.
-# Enable log management 
+Added:
+# Store currency validation against accepted currency list before enabling payment method.
+# Log management enabled.
 
 = 1.1.4 =
-Added: 
-# request trace log added in the receier page
+Added:
+# Request trace log added on receiver page.
 
 = 1.1.3 =
-Added: 
-# Registration process change.
+Added:
+# Registration process updated.
 
 = 1.1.2 =
-Added: 
-# merchant coin address activation progress
+Added:
+# Merchant coin address activation progress.
 
 = 1.1.1 =
-Added: 
-# Cancel and return link redirect to checkout page 
-# Brand logo update 
+Added:
+# Cancel and Return link redirects to checkout page.
+# Brand logo update.
 
 = 1.0.8 =
-Brand logo update through plugin
+Brand logo update via plugin.
 
 = 1.0.7 =
-External fee feature added, Tolerance feature added
+External fee feature added. Tolerance feature added.
 
 = 1.0.6 =
-binance pay option added. hash link updated, banner changes.
+Binance Pay option added. Hash link updated. Banner updated.
 
 = 1.0.5 =
-API link added. title changes, banner changes.
+API link added. Title and banner updated.
 
 = 1.0.4 =
-Simply install the update. No further action is needed.
+Simply install the update. No further action needed.
 
 = 1.0.3 =
-Simply install the update. No further action is needed.
-
-
+Simply install the update. No further action needed.
 
 
 == Screenshots ==
 1. Please visit dash.payerurl.com to complete your registration.
-2. Generate your API keys and link them to ABC Crypto Checkout and PayerURL (payerurl.com) to start accepting payments.
-3. Paste the API keys you generated on payerurl.com into your plugin settings: WooCommerce → Settings → Payments → Manage → Payerurl API Credentials.
-   Then click Test credentials. If everything is correct, you’ll see a green message: “Both API key and secret key found. Saving credentials…”.
-4. After you add your receiving wallet and correctly set up your Binance user account API, the payment page will appear on your product checkout payment request.
-5. Binance C2C Payment.
-6. USDC payment page (demo).
-7. USDT payment page (demo).
-8. Payment receive confirmation (demo).
-9. Payment confirmation email (demo).
-10. Payerurl dashboard.
-11. Merchant will also receive an email notification with payment details.
-12. At the same time crypto amount will be deposited to the merchants account also listed in transaction history page.
+2. Generate your API keys and link them to ABC Crypto Checkout and PayerURL (payerurl.com) to start accepting cryptocurrency payments.
+3. Paste the API keys generated on payerurl.com into your plugin settings: WooCommerce → Settings → Payments → Manage → Payerurl API Credentials. Click "Test Credentials" — a green confirmation message will confirm success.
+4. (Optional) Add your XPUB key to enable unlimited HD wallet address rotation for mass-volume Bitcoin and crypto transactions.
+5. After setting up your receiving wallets and/or Binance account API, the payment page will display on checkout.
+6. Binance C2C Payment.
+7. USDC payment page (demo).
+8. USDT payment page (demo).
+9. Bitcoin (BTC) payment page (demo).
+10. Payment receive confirmation (demo).
+11. Payment confirmation email (demo).
+12. Payerurl dashboard.
+13. Merchant email notification with full payment details.
+14. Crypto amount deposited to merchant account and listed in transaction history.
