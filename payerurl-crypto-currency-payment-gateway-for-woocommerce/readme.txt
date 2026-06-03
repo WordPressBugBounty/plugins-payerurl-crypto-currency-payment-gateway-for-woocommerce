@@ -1,17 +1,17 @@
 === ABC Crypto Checkout ===
 Contributors: Payerurl team
 Donate link:
-Tags: Binance, USDT, Bitcoin, Ethereum, crypto payment gateway, USDC, Coinbase, XRP, Solana, XPUB wallet, WooCommerce crypto, blockchain payment, cryptocurrency checkout, DeFi payment, Web3 payment
+Tags: Binance, Visa crypto payment, Bitcoin, Ethereum, crypto payment gateway, USDC,USDT, Coinbase, WooCommerce crypto,  cryptocurrency checkout, buy crypto with credit card
 Requires at least: 5.0
 Tested up to: 6.9.4
 Requires PHP: 7.0
-Stable tag: 1.8.2
+Stable tag: 1.8.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
 
-ABC Crypto Checkout is a powerful cryptocurrency payment gateway for WooCommerce that lets you accept Bitcoin, Ethereum, USDT, USDC, Binance Pay, and 10+ cryptocurrencies directly into your own wallet — no intermediaries, no KYC required. Now featuring XPUB-powered unlimited wallet rotation for high-volume merchants.
+ABC Crypto Checkout is a powerful cryptocurrency payment gateway for WooCommerce that lets you accept Bitcoin, Ethereum, USDT, USDC, Binance Pay, and 10+ cryptocurrencies directly into your own wallet. Customers can also pay with Visa, Mastercard, credit card, or bank transfer — auto-converted to crypto at checkout. No intermediaries, no KYC required. Now featuring XPUB-powered unlimited wallet rotation for high-volume merchants.
 
 == Description ==
 
@@ -21,14 +21,6 @@ ABC Crypto Checkout is a powerful cryptocurrency payment gateway for WooCommerce
 ### Introduction ###
 ABC Crypto Checkout — powered by Payerurl — is a non-custodial cryptocurrency payment gateway that connects WooCommerce directly to your crypto wallets. Whether you accept Bitcoin (BTC), Ethereum (ETH), USDT TRC20, USDT ERC20, USDC ERC20, Binance Pay, TON, or other major cryptocurrencies, payments land in your wallet instantly with zero middlemen. Now with XPUB (Extended Public Key) support, you can auto-rotate through unlimited receiving addresses — ideal for high-volume stores, crypto exchanges, and enterprise merchants.
 
-### BINANCE PAY & BINANCE QR CODE PAYMENT ###
-Looking for a Binance payment plugin for WordPress? ABC Crypto Checkout offers native Binance Pay and Binance QR code integration — the fastest, most secure contactless payment method for crypto-native customers. Customers scan your Binance QR code directly on your checkout page without ever leaving your store. Zero network fees. Zero friction.
-
-Binance Pay features:
-- Instant settlement to your Binance account
-- No additional network or gas fees
-- Supports Binance personal and merchant API
-- Secure, borderless, contactless payments
 
 ### XPUB WALLET INTEGRATION — UNLIMITED ADDRESS ROTATION ###
 The most advanced feature for serious crypto merchants. By adding your XPUB (Extended Public Key) — also known as xPub, ypub, or zpub — ABC Crypto Checkout automatically generates a fresh, unique Bitcoin or cryptocurrency wallet address for every order. This means:
@@ -40,6 +32,30 @@ The most advanced feature for serious crypto merchants. By adding your XPUB (Ext
 📦 **Batch & Mass Payment Ready** — Supports mass-volume transaction processing without rate limits or address collisions.
 
 Supported XPUB formats: BTC (xpub/ypub/zpub), ETH, and other HD wallet derivation paths.
+
+
+### BINANCE PAY & BINANCE QR CODE PAYMENT ###
+Looking for a Binance payment plugin for WordPress? ABC Crypto Checkout offers native Binance Pay and Binance QR code integration — the fastest, most secure contactless payment method for crypto-native customers. Customers scan your Binance QR code directly on your checkout page without ever leaving your store. Zero network fees. Zero friction.
+
+Binance Pay features:
+- Instant settlement to your Binance account
+- No additional network or gas fees
+- Supports Binance personal and merchant API
+- Secure, borderless, contactless payments
+
+
+### BUY CRYPTO WITH VISA, MASTERCARD, CREDIT CARD OR BANK ACCOUNT ###
+Not all customers hold cryptocurrency — and that's no longer a barrier. ABC Crypto Checkout allows customers to purchase products using their **Visa card, Mastercard, credit card, debit card, or bank account (bank transfer)**. The payment is automatically converted into cryptocurrency at the live market rate and settled directly into the merchant's wallet.
+
+This bridges the gap between traditional fiat payments and crypto commerce — customers pay the way they're comfortable, merchants receive crypto. No crypto wallet required on the customer's side.
+
+Key highlights:
+- 💳 **Visa & Mastercard** — Standard credit and debit card checkout experience
+- 🏦 **Bank Transfer / Bank Account** — Direct bank payment converted to crypto at checkout
+- 🔄 **Instant Fiat-to-Crypto Conversion** — Customer pays in fiat; merchant receives cryptocurrency
+- 🌍 **Global Coverage** — Supports 169+ fiat currencies for card and bank payments
+- 🛡️ **Secure & Compliant** — Encrypted card processing with fraud protection
+- 🧩 **Zero Friction for Customers** — No crypto wallet or exchange account needed to shop
 
 
 ### HOW THE PLUGIN WORKS ###
@@ -59,6 +75,7 @@ ABC Crypto Checkout converts any fiat currency (USD, EUR, GBP, JPY, CAD, AUD, an
 
 
 ### KEY FEATURES ###
+🔸 Available in 5 languages: English, Spanish, Russian, Arabic, and Portuguese.
 🔸 **XPUB Unlimited Wallet Integration** — Auto-generate unique addresses per order for mass-volume transactions
 🔸 **10+ Crypto Networks** — Bitcoin BTC, Ethereum ETH, USDT TRC20, USDT ERC20, USDC ERC20, Binance Pay, Binance QR, TON, and more
 🔸 **169+ Fiat Currencies** — USD, EUR, GBP, JPY, CAD, AUD, INR, and more with [real-time exchange rates](https://payerurl.com/fiat-to-crypto-exchange/)
@@ -72,10 +89,10 @@ ABC Crypto Checkout converts any fiat currency (USD, EUR, GBP, JPY, CAD, AUD, an
 🔸 **Auto Partial Payment Handling** — Order marked as Processing when ≥90% of payment is received
 🔸 **Discount Feature** — Offer crypto-specific discounts to incentivize on-chain payments
 🔸 **Live Exchange Rate** — Real-time crypto/fiat conversion at checkout
-🔸 **DeFi & Web3 Ready** — Supports wallet-to-wallet payments for Web3-native customers
+🔸 **Buy Crypto with Card or Bank** — Customers can pay via Visa, Mastercard, credit/debit card, or bank transfer; auto-converted to crypto for the merchant
 🔸 **Easy API Key Setup** — One-click credential check and save
 🔸 **24/7 Support** via Telegram: [https://t.me/Payerurl](https://t.me/Payerurl)
-🔸 **Tested with WooCommerce 6.9.1 and above**
+🔸 **Tested with WooCommerce 6.9.4 and above**
 
 
 ### SUPPORTED E-COMMERCE PLATFORMS ###
@@ -100,15 +117,19 @@ WooCommerce, OpenCart, PHP, Python, Node.js, Dhru Fusion, Laravel
 
 == Changelog ==
 
-= 1.8.2 =
+= 1.8.4 =
+Added:
+# security update
+
+= 1.8.3 =
+Added:
+# security update
+# Available in 5 languages: English, Spanish, Russian, Arabic, and Portuguese.
+# We’ve expanded our payment methods! You can now buy crypto easily using Visa, Mastercard, or any credit/debit card.
+
+1.8.2
 Added:
 # XPUB (Extended Public Key) wallet integration for unlimited address for all coin.
-
-= 1.8.1 =
-Added:
-# XPUB (Extended Public Key) wallet integration for unlimited address generation.
-# Mass-volume transaction support via HD wallet derivation.
-# Improved multi-address rotation for high-volume merchants.
 
 = 1.8.0 =
 Added:

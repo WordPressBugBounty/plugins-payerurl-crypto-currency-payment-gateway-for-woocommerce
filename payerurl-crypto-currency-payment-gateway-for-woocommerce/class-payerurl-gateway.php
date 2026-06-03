@@ -47,19 +47,19 @@ if (!class_exists("WC_Payerurl")) {
             $this->init_form_fields();
             $this->init_settings();
 
-            $this->enable_log = $this->get_option('enable_log', false);
-            $this->payerurl_public_key = sanitize_text_field($this->get_option('payerurl_public_key', ''));
-            $this->payerurl_secret_key = sanitize_text_field($this->get_option('payerurl_secret_key', ''));
-            $this->enable_pay_later = $this->get_option('enable_pay_later', 'no');
-            $this->enable_fee_cart = $this->get_option('enable_fee_cart', 'no');
-            $this->payerurl_fee_title = $this->get_option('payerurl_fee_title', '');
-            $this->payerurl_fee_type = $this->get_option('payerurl_fee_type', 'percentage');
-            $this->payerurl_fee_amount = $this->get_option('payerurl_fee_amount', 0);
-            $this->enable_discount_cart = $this->get_option('enable_discount_cart', 'no');
-            $this->payerurl_discount_title = $this->get_option('payerurl_discount_title', '');
-            $this->payerurl_discount_type = $this->get_option('payerurl_discount_type', 'percentage');
-            $this->payerurl_discount_amount = $this->get_option('payerurl_discount_amount', 0);
-            $this->after_payment_order_status = $this->get_option('after_payment_order_status', 'wc-processing');
+            $this->enable_log                  = $this->get_option('enable_log', false);
+            $this->payerurl_public_key         = sanitize_text_field($this->get_option('payerurl_public_key', ''));
+            $this->payerurl_secret_key         = sanitize_text_field($this->get_option('payerurl_secret_key', ''));
+            $this->enable_pay_later            = $this->get_option('enable_pay_later', 'no');
+            $this->enable_fee_cart             = $this->get_option('enable_fee_cart', 'no');
+            $this->payerurl_fee_title          = $this->get_option('payerurl_fee_title', '');
+            $this->payerurl_fee_type           = $this->get_option('payerurl_fee_type', 'percentage');
+            $this->payerurl_fee_amount         = $this->get_option('payerurl_fee_amount', 0);
+            $this->enable_discount_cart        = $this->get_option('enable_discount_cart', 'no');
+            $this->payerurl_discount_title     = $this->get_option('payerurl_discount_title', '');
+            $this->payerurl_discount_type      = $this->get_option('payerurl_discount_type', 'percentage');
+            $this->payerurl_discount_amount    = $this->get_option('payerurl_discount_amount', 0);
+            $this->after_payment_order_status  = $this->get_option('after_payment_order_status', 'wc-processing');
 
             if (empty(self::$logger)) self::$logger = wc_get_logger();
 
@@ -89,20 +89,18 @@ if (!class_exists("WC_Payerurl")) {
             if (!empty($this->after_payment_order_status)) {
                 $status = str_replace('wc-', '', $this->after_payment_order_status);
             }
-
             return $status;
         }
 
         public function add_payerurl_fee($cart)
         {
             $session = WC()->session->get('chosen_payment_method');
-
             if (empty($session) || $session != strval(PAYERURL_ID)) return;
 
             $is_enable_cart = $this->enable_fee_cart;
             if ($is_enable_cart == 'no' && is_cart()) return;
 
-            $amount = (float)$this->payerurl_fee_amount;
+            $amount = (float) $this->payerurl_fee_amount;
             if (empty($amount) || !is_numeric($amount) || $amount <= 0) return;
 
             $type = $this->payerurl_fee_type;
@@ -117,20 +115,18 @@ if (!class_exists("WC_Payerurl")) {
                     return;
             }
 
-            $title = $this->payerurl_fee_title;
-            $cart->add_fee($title, $fee, false);
+            $cart->add_fee($this->payerurl_fee_title, $fee, false);
         }
 
         public function add_payerurl_discount($cart)
         {
             $session = WC()->session->get('chosen_payment_method');
-
             if (empty($session) || $session != strval(PAYERURL_ID)) return;
 
             $is_enable_cart = $this->enable_discount_cart;
             if ($is_enable_cart == 'no' && is_cart()) return;
 
-            $amount = (float)$this->payerurl_discount_amount;
+            $amount = (float) $this->payerurl_discount_amount;
             if (empty($amount) || !is_numeric($amount) || $amount <= 0) return;
 
             $type = $this->payerurl_discount_type;
@@ -145,19 +141,18 @@ if (!class_exists("WC_Payerurl")) {
                     return;
             }
 
-            $title = $this->payerurl_discount_title;
-            $cart->add_fee($title, -$discount, false);
+            $cart->add_fee($this->payerurl_discount_title, -$discount, false);
         }
 
         public function process_payment($order_id)
         {
-            $reqBody = $this->getRequestBody($order_id);
+            $reqBody   = $this->getRequestBody($order_id);
             $signature = $this->generateSignature($reqBody, $this->payerurl_secret_key);
-            $authStr = $this->getAuthStr($signature, $this->payerurl_public_key);
+            $authStr   = $this->getAuthStr($signature, $this->payerurl_public_key);
             $args = [
                 'timeout' => 50,
-                'body' => $reqBody,
-                'headers' => $this->getRequestHeader($authStr)
+                'body'    => $reqBody,
+                'headers' => $this->getRequestHeader($authStr),
             ];
 
             if (!empty($this->enable_log)) $this->log(json_encode($args));
@@ -165,24 +160,20 @@ if (!class_exists("WC_Payerurl")) {
             if (!empty($this->enable_log)) $this->log(json_encode($response));
 
             $result = array('result' => 'error', 'redirect' => wc_get_checkout_url());
+
             if (is_wp_error($response)) {
                 wc_add_notice(
-                    __(
-                        'An error occurred, We were unable to process your order, please try again.',
-                        'ABC-crypto-currency-payment-gateway-for-wooCommerce'
-                    ),
+                    __('An error occurred, We were unable to process your order, please try again.', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
                     'error'
                 );
                 return $result;
             }
 
             $body = json_decode($response['body'], true);
+
             if ($response['response']['code'] !== 200) {
                 wc_add_notice(
-                    __(
-                        "!Error: $body",
-                        'ABC-crypto-currency-payment-gateway-for-wooCommerce'
-                    ),
+                    __('An error occurred, please try again.', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
                     'error'
                 );
                 return $result;
@@ -190,16 +181,13 @@ if (!class_exists("WC_Payerurl")) {
 
             if (isset($body['redirectTO'])) {
                 $result = array(
-                    'result' => 'success',
-                    'redirect' => esc_url_raw($body['redirectTO'])
+                    'result'   => 'success',
+                    'redirect' => esc_url_raw($body['redirectTO']),
                 );
                 WC()->cart->empty_cart();
             } else {
                 wc_add_notice(
-                    __(
-                        'An error occurred, We were unable to process your order, please contact us',
-                        'ABC-crypto-currency-payment-gateway-for-wooCommerce'
-                    ),
+                    __('An error occurred, We were unable to process your order, please contact us', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
                     'error'
                 );
             }
@@ -209,7 +197,7 @@ if (!class_exists("WC_Payerurl")) {
 
         public function payerurl_response()
         {
-            $input = $this->extractResponseData();
+            $input   = $this->extractResponseData();
             $headers = getallheaders();
             if (!empty($this->enable_log)) $this->log(json_encode([$headers, $input]));
 
@@ -217,37 +205,46 @@ if (!class_exists("WC_Payerurl")) {
             extract($response);
             if (!empty($status)) return wp_send_json($response);
 
-            $api_hash_link = "https://dash.payerurl.com/payment/" . $input['transaction_id'];
-            $link = filter_var($api_hash_link, FILTER_SANITIZE_URL);
-            $format_link = sprintf(
+            // ── FIX: Replay attack protection — reject already-paid orders ──
+            if ($order->is_paid()) {
+                return wp_send_json(['status' => 2050, 'message' => 'Order already paid']);
+            }
+
+            $api_hash_link = 'https://dash.payerurl.com/payment/' . sanitize_text_field($input['transaction_id']);
+            $link          = filter_var($api_hash_link, FILTER_SANITIZE_URL);
+            $format_link   = sprintf(
                 '<a href="%s" target="_blank" rel="noopener">%s</a>',
-                $link,
-                $input['transaction_id']
+                esc_url($link),
+                esc_html($input['transaction_id'])
             );
 
             $order->set_transaction_id($input['transaction_id']);
             $order->add_order_note(
                 sprintf(
-                    'Txn. ID: %s<br/>Received Coin: %s %s<br/>
-                    (%s %s)<br/>Time: %s UTC<br/>Note: %s',
+                    'Txn. ID: %s<br/>Received Coin: %s %s<br/>(%s %s)<br/>Time: %s UTC<br/>Note: %s',
                     $format_link,
-                    $input['coin_rcv_amnt'],
-                    $input['coin_rcv_amnt_curr'],
-                    $input['confirm_rcv_amnt'],
-                    $input['confirm_rcv_amnt_curr'],
-                    $input['txn_time'],
-                    $input['note']
+                    esc_html($input['coin_rcv_amnt']),
+                    esc_html($input['coin_rcv_amnt_curr']),
+                    esc_html($input['confirm_rcv_amnt']),
+                    esc_html($input['confirm_rcv_amnt_curr']),
+                    esc_html($input['txn_time']),
+                    esc_html($input['note'])
                 ),
                 true
             );
 
+            // ── FIX: Pay-later path now enforces the same 90% amount threshold ──
             if ($this->enable_pay_later == 1 && $input['status_code'] === 200) {
-                $order->payment_complete($input['transaction_id']);
-                return wp_send_json(['status' => 2040, 'message' => '[Pay later] Order updated successfully']);
+                if ($input['confirm_rcv_amnt'] >= ($order->get_total() * 0.9)) {
+                    $order->payment_complete($input['transaction_id']);
+                    return wp_send_json(['status' => 2040, 'message' => '[Pay later] Order updated successfully']);
+                }
             }
-             // allow at least 90% payment
+
+            // Allow at least 90% payment
             if (
-                $input['status_code'] === 200 && $input['coin_rcv_amnt'] != 0 &&
+                $input['status_code'] === 200 &&
+                $input['coin_rcv_amnt'] != 0 &&
                 $input['confirm_rcv_amnt'] >= ($order->get_total() * 0.9)
             ) {
                 $order->payment_complete($input['transaction_id']);
@@ -258,39 +255,38 @@ if (!class_exists("WC_Payerurl")) {
             }
         }
 
+        /**
+         * FIX: All three echo calls now use proper escaping to prevent XSS.
+         */
         public function generate_button_html($key, $data)
         {
-            $defaults  = array(
-                'title' => '',
-                'disabled' => false,
-                'class' => '',
-                'css' => '',
-                'desc_tip' => false,
+            $defaults = array(
+                'title'       => '',
+                'disabled'    => false,
+                'class'       => '',
+                'css'         => '',
+                'desc_tip'    => false,
                 'description' => '',
-                'name' => '',
+                'name'        => '',
             );
-            $data  = wp_parse_args($data, $defaults);
+            $data = wp_parse_args($data, $defaults);
 
             ob_start();
-?>
+            ?>
             <tr valign="top">
                 <th colspan="1" scope="row" class="titledesc">
-                    <button type="button" class="button <?php echo $data['class']; ?>">
-                        <?php echo $data['name']; ?>
+                    <button type="button" class="button <?php echo esc_attr($data['class']); ?>">
+                        <?php echo esc_html($data['name']); ?>
                     </button>
-                    <?php
-                    if (isset($data['description'])) {
-                    ?>
+                    <?php if (!empty($data['description'])) : ?>
                         <p class="description">
-                            <?php echo $data['description']; ?>
+                            <?php echo wp_kses_post($data['description']); ?>
                         </p>
-                    <?php
-                    }
-                    ?>
+                    <?php endif; ?>
                 </th>
                 <td class="forminp"></td>
             </tr>
-<?php
+            <?php
             return ob_get_clean();
         }
 
@@ -301,21 +297,19 @@ if (!class_exists("WC_Payerurl")) {
             if (!isset($input['transaction_id']) || empty($input['transaction_id']))
                 return ['status' => 2050, 'message' => 'Transaction ID not found'];
 
-            list($auth, $resSignature) = $this->getAuthFromResponse($headers);
-            if (empty($auth)) $auth = '';
-            if (!isset($resSignature)) $resSignature = '';
+            // ── FIX: Guard against list() crash when Authorization header is absent ──
+            $authData = $this->getAuthFromResponse($headers);
+            if ($authData === false || count($authData) < 2) {
+                return ['status' => 2030, 'message' => 'Authorization header missing or malformed'];
+            }
+            [$auth, $resSignature] = $authData;
 
-            if ($this->payerurl_public_key != $auth)
+            if ($this->payerurl_public_key !== $auth)
                 return ['status' => 2030, 'message' => 'Public key doesn\'t match'];
 
             $signature = $this->generateSignature($input, $this->payerurl_secret_key);
-            if (!hash_equals($signature, $resSignature)) {
-                return wp_send_json(
-                    array_merge(
-                        ['status' => 2030, 'message' => 'Signature doesn\'t match'],
-                        $input
-                    )
-                );
+            if (!hash_equals($signature, (string) $resSignature)) {
+                return wp_send_json(['status' => 2030, 'message' => 'Signature doesn\'t match']);
             }
 
             $order = wc_get_order($input['order_id']);
@@ -336,7 +330,8 @@ if (!class_exists("WC_Payerurl")) {
             if (0 !== stripos($authStr, 'Bearer ')) return false;
             $authStr = sanitize_text_field(str_replace('Bearer ', '', $authStr));
             $authStr = base64_decode($authStr);
-            return explode(':', $authStr);
+            $parts   = explode(':', $authStr, 2);
+            return (count($parts) === 2) ? $parts : false;
         }
 
         private function getAuthStr($signature, $pubKey)
@@ -357,7 +352,7 @@ if (!class_exists("WC_Payerurl")) {
         private function getRequestHeader($authStr)
         {
             return [
-                'Content-Type' => 'application/x-www-form-urlencoded;charset=UTF-8',
+                'Content-Type'  => 'application/x-www-form-urlencoded;charset=UTF-8',
                 'Authorization' => sprintf('Bearer %s', $authStr),
             ];
         }
@@ -365,25 +360,25 @@ if (!class_exists("WC_Payerurl")) {
         private function getRequestBody($order_id)
         {
             $order = new WC_Order($order_id);
-            $args = array(
-                'order_id' => $order->get_id(),
-                'order_key' => $order->get_order_key(),
-                'amount' => $order->get_total(),
-                'currency' => strtolower(get_woocommerce_currency()),
+            $args  = array(
+                'order_id'      => $order->get_id(),
+                'order_key'     => $order->get_order_key(),
+                'amount'        => $order->get_total(),
+                'currency'      => strtolower(get_woocommerce_currency()),
                 'billing_fname' => sanitize_text_field($order->get_billing_first_name()),
                 'billing_lname' => sanitize_text_field($order->get_billing_last_name()),
                 'billing_email' => sanitize_email($order->get_billing_email()),
-                'redirect_to' => $order->get_checkout_order_received_url(),
-                'cancel_url' => wc_get_checkout_url(),
-                'type' => 'wp',
-                'notify_url' => home_url('/wc-api/wc_payerurl')
+                'redirect_to'   => $order->get_checkout_order_received_url(),
+                'cancel_url'    => wc_get_checkout_url(),
+                'type'          => 'wp',
+                'notify_url'    => home_url('/wc-api/wc_payerurl'),
             );
 
-            $items = $order->get_items();
+            $items        = $order->get_items();
             $args['items'] = array_reduce($items, function ($carry, $item) {
                 array_push($carry, [
-                    "name" => sanitize_text_field($item->get_name()),
-                    'qty' => $item->get_quantity(),
+                    'name'  => sanitize_text_field($item->get_name()),
+                    'qty'   => $item->get_quantity(),
                     'price' => $item->get_total(),
                 ]);
                 return $carry;
@@ -395,48 +390,59 @@ if (!class_exists("WC_Payerurl")) {
         private function extractResponseData()
         {
             return [
-                'ext_transaction_id' => $this->getDataFromResponse('ext_transaction_id'),
-                'transaction_id' => $this->getDataFromResponse('transaction_id'),
-                'status_code' => filter_var($this->getDataFromResponse('status_code'), FILTER_VALIDATE_INT),
-                'note' => $this->getDataFromResponse('note'),
-                'confirm_rcv_amnt' => $this->getDataFromResponse('confirm_rcv_amnt', 0),
+                'ext_transaction_id'    => $this->getDataFromResponse('ext_transaction_id'),
+                'transaction_id'        => $this->getDataFromResponse('transaction_id'),
+                'status_code'           => filter_var($this->getDataFromResponse('status_code'), FILTER_VALIDATE_INT),
+                'note'                  => $this->getDataFromResponse('note'),
+                'confirm_rcv_amnt'      => $this->getDataFromResponse('confirm_rcv_amnt', 0),
                 'confirm_rcv_amnt_curr' => strtoupper($this->getDataFromResponse('confirm_rcv_amnt_curr')),
-                'coin_rcv_amnt' => $this->getDataFromResponse('coin_rcv_amnt', 0),
-                'coin_rcv_amnt_curr' => strtoupper($this->getDataFromResponse('coin_rcv_amnt_curr')),
-                'txn_time' => $this->getDataFromResponse('txn_time'),
-                'order_id' => $this->getDataFromResponse('order_id'),
+                'coin_rcv_amnt'         => $this->getDataFromResponse('coin_rcv_amnt', 0),
+                'coin_rcv_amnt_curr'    => strtoupper($this->getDataFromResponse('coin_rcv_amnt_curr')),
+                'txn_time'              => $this->getDataFromResponse('txn_time'),
+                'order_id'              => $this->getDataFromResponse('order_id'),
             ];
         }
 
         private function getDataFromResponse($key, $default = '')
         {
-            return isset($_POST[$key]) ? sanitize_text_field($_POST[$key]) : $default;
+            return isset($_POST[$key]) ? sanitize_text_field(wp_unslash($_POST[$key])) : $default;
         }
 
         private function log($message, $level = 'info')
         {
-            $context = array('source' => 'payerurl');
-            self::$logger->log($level, $message, $context);
+            self::$logger->log($level, $message, ['source' => 'payerurl']);
         }
 
+        /**
+         * FIX: Added nonce verification and capability check to prevent
+         * unauthorized AJAX calls from non-admin users.
+         */
         public function testApiCreds()
         {
-            if (empty($_POST["app_key"]) || empty($_POST["secret_key"])) {
+            // ── Verify nonce ───────────────────────────────────────────
+            check_ajax_referer('payerurl-admin-nonce', '_wpnonce');
+
+            // ── Verify capability ──────────────────────────────────────
+            if (!current_user_can('manage_woocommerce')) {
                 return wp_send_json_error([
-                    'message' => __('Add the public and secret key', 'ABC-crypto-currency-payment-gateway-for-wooCommerce')
+                    'message' => __('You do not have permission to perform this action.', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
+                ], 403);
+            }
+
+            if (empty($_POST['app_key']) || empty($_POST['secret_key'])) {
+                return wp_send_json_error([
+                    'message' => __('Add the public and secret key', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
                 ], 400);
             }
 
-            $body = [
-                'test' => sanitize_text_field($_POST["app_key"])
-            ];
-            $signature = $this->generateSignature($body, sanitize_text_field($_POST["secret_key"]));
-            $authStr = $this->getAuthStr($signature, sanitize_text_field($_POST["app_key"]));
+            $body      = ['test' => sanitize_text_field(wp_unslash($_POST['app_key']))];
+            $signature = $this->generateSignature($body, sanitize_text_field(wp_unslash($_POST['secret_key'])));
+            $authStr   = $this->getAuthStr($signature, sanitize_text_field(wp_unslash($_POST['app_key'])));
 
             $args = [
                 'timeout' => 45,
-                'body' => $body,
-                'headers' => $this->getRequestHeader($authStr)
+                'body'    => $body,
+                'headers' => $this->getRequestHeader($authStr),
             ];
 
             if (!empty($this->enable_log)) $this->log(json_encode($args));
@@ -445,15 +451,13 @@ if (!class_exists("WC_Payerurl")) {
 
             if (is_wp_error($response)) {
                 return wp_send_json_error([
-                    'message' => __('Server error', 'ABC-crypto-currency-payment-gateway-for-wooCommerce')
+                    'message' => __('Server error', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
                 ], 500);
             }
 
             $body = json_decode($response['body'], true);
             if ($response['response']['code'] !== 200) {
-                return wp_send_json_error([
-                    'message' => $body['message']
-                ], 401);
+                return wp_send_json_error(['message' => $body['message']], 401);
             }
 
             return wp_send_json_success();

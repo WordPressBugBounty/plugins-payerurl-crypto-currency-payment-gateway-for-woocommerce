@@ -6,7 +6,7 @@
  * Author: payerurl team
  * Author URI: https://payerurl.com
  * ABC Crypto Checkout is a free WooCommerce cryptocurrency payment gateway that lets merchants accept Bitcoin (BTC), Ethereum (ETH), USDT TRC20, USDT ERC20,USDT BEP20, USDC ERC20, USDC BEP20, and Binance Pay — directly into their own crypto wallet. No intermediaries, no KYC, instant settlement.
- * Version:1.8.2
+ * Version:1.8.4
  * License: GPLv3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain: ABC-crypto-currency-payment-gateway-for-wooCommerce
@@ -21,7 +21,7 @@ if (!defined('WPINC')) die("Direct Access Not Allowed");
 if (!class_exists('Payerurl')) {
     final class Payerurl
     {
-        const version = "1.8.2";
+        const version = "1.8.4";
         protected static $_instance = NULL;
         private $valid_currencies = [];
 
@@ -119,8 +119,8 @@ if (!class_exists('Payerurl')) {
 
         public function payerurl_woocommerce_hpos_init()
         {
-            if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) { 
-                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true ); 
+            if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+                \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
             }
         }
 
@@ -169,9 +169,9 @@ if (!class_exists('Payerurl')) {
             wp_enqueue_media();
             if (
                 !isset($_GET['page']) ||
-                $_GET['page'] != 'wc-settings' ||
+                sanitize_text_field(wp_unslash($_GET['page'])) !== 'wc-settings' ||
                 !isset($_GET['section']) ||
-                $_GET['section'] != 'wc_payerurl_gateway'
+                sanitize_text_field(wp_unslash($_GET['section'])) !== 'wc_payerurl_gateway'
             ) return;
 
             $file = PAYERURL_DIR . '/assets/js/payerurl-admin-payment-settings.js';
