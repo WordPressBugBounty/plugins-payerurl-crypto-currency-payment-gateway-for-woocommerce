@@ -1,11 +1,11 @@
 === ABC Crypto Checkout ===
 Contributors: Payerurl team
 Donate link:
-Tags: Binance, Visa crypto payment, Bitcoin, Ethereum, crypto payment gateway, USDC,USDT, Coinbase, WooCommerce crypto,  cryptocurrency checkout, buy crypto with credit card
+Tags: Binance, Visa crypto payment, Bitcoin,WooCommerce crypto,USDC,USDT, Ethereum, crypto payment gateway,  Coinbase,   cryptocurrency checkout, buy crypto with credit card
 Requires at least: 5.0
 Tested up to: 6.9.4
 Requires PHP: 7.0
-Stable tag: 1.8.4
+Stable tag: 1.8.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,18 @@ WooCommerce, OpenCart, PHP, Python, Node.js, Dhru Fusion, Laravel
 
 
 == Changelog ==
+
+= 1.8.7 =
+Added:
+# description update
+
+= 1.8.6 =
+Added:
+# description update
+
+= 1.8.5 =
+Added:
+# security update
 
 = 1.8.4 =
 Added:
@@ -398,7 +410,7 @@ Simply install the update. No further action needed.
 == Screenshots ==
 1. Please visit dash.payerurl.com to complete your registration.
 2. Generate your API keys and link them to ABC Crypto Checkout and PayerURL (payerurl.com) to start accepting cryptocurrency payments.
-3. Paste the API keys generated on payerurl.com into your plugin settings: WooCommerce → Settings → Payments → Manage → Payerurl API Credentials. Click "Test Credentials" — a green confirmation message will confirm success.
+3. Paste the API keys generated on payerurl.com into your plugin settings: WooCommerce -> Settings -> Payments -> Manage -> Payerurl API Credentials. Click Test Credentials button - a green confirmation message will confirm success.
 4. (Optional) Add your XPUB key to enable unlimited HD wallet address rotation for mass-volume Bitcoin and crypto transactions.
 5. After setting up your receiving wallets and/or Binance account API, the payment page will display on checkout.
 6. Binance C2C Payment.

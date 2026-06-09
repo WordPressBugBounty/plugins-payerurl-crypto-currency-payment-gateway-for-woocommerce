@@ -155,9 +155,19 @@ if (!class_exists("WC_Payerurl")) {
                 'headers' => $this->getRequestHeader($authStr),
             ];
 
-            if (!empty($this->enable_log)) $this->log(json_encode($args));
+
+            if (!empty($this->enable_log)) {
+                $loggable = $args;
+                unset($loggable['headers']);
+                $this->log(json_encode($loggable));
+            }
+
             $response = wp_remote_post($this->paymentURL, $args);
-            if (!empty($this->enable_log)) $this->log(json_encode($response));
+
+            if (!empty($this->enable_log)) {
+                $loggable_response = is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_body($response);
+                $this->log($loggable_response);
+            }
 
             $result = array('result' => 'error', 'redirect' => wc_get_checkout_url());
 
@@ -169,9 +179,9 @@ if (!class_exists("WC_Payerurl")) {
                 return $result;
             }
 
-            $body = json_decode($response['body'], true);
+            $body = json_decode(wp_remote_retrieve_body($response), true);
 
-            if ($response['response']['code'] !== 200) {
+            if (wp_remote_retrieve_response_code($response) !== 200) {
                 wc_add_notice(
                     __('An error occurred, please try again.', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
                     'error'
@@ -198,12 +208,19 @@ if (!class_exists("WC_Payerurl")) {
         public function payerurl_response()
         {
             $input   = $this->extractResponseData();
-            $headers = getallheaders();
-            if (!empty($this->enable_log)) $this->log(json_encode([$headers, $input]));
+
+
+            $headers = $this->getAllHeaders();
+
+            if (!empty($this->enable_log)) $this->log(json_encode(['headers_keys' => array_keys($headers), 'input' => $input]));
 
             $response = $this->isResponseValid($headers, $input);
-            extract($response);
-            if (!empty($status)) return wp_send_json($response);
+
+            if (!empty($response['status'])) {
+                return wp_send_json($response);
+            }
+
+            $order = $response['order'];
 
             // ── FIX: Replay attack protection — reject already-paid orders ──
             if ($order->is_paid()) {
@@ -290,14 +307,19 @@ if (!class_exists("WC_Payerurl")) {
             return ob_get_clean();
         }
 
+
         private function isResponseValid($headers, $input)
         {
             if (!isset($input['order_id']) || empty($input['order_id']))
                 return ['status' => 2050, 'message' => 'Order ID not found'];
+
             if (!isset($input['transaction_id']) || empty($input['transaction_id']))
                 return ['status' => 2050, 'message' => 'Transaction ID not found'];
 
-            // ── FIX: Guard against list() crash when Authorization header is absent ──
+            if ($input['status_code'] === false) {
+                return ['status' => 2050, 'message' => 'Invalid or missing status code'];
+            }
+
             $authData = $this->getAuthFromResponse($headers);
             if ($authData === false || count($authData) < 2) {
                 return ['status' => 2030, 'message' => 'Authorization header missing or malformed'];
@@ -308,12 +330,14 @@ if (!class_exists("WC_Payerurl")) {
                 return ['status' => 2030, 'message' => 'Public key doesn\'t match'];
 
             $signature = $this->generateSignature($input, $this->payerurl_secret_key);
+
             if (!hash_equals($signature, (string) $resSignature)) {
-                return wp_send_json(['status' => 2030, 'message' => 'Signature doesn\'t match']);
+                return ['status' => 2030, 'message' => 'Signature doesn\'t match'];
             }
 
             $order = wc_get_order($input['order_id']);
-            if (is_null($order)) return ['status' => 2050, 'message' => 'Order not found'];
+            if (is_null($order) || $order === false)
+                return ['status' => 2050, 'message' => 'Order not found'];
 
             if ($input['status_code'] === 20000) {
                 $order->update_status('cancelled');
@@ -323,6 +347,27 @@ if (!class_exists("WC_Payerurl")) {
             return ['order' => $order];
         }
 
+        private function getAllHeaders(): array
+        {
+            if (function_exists('getallheaders')) {
+                $headers = getallheaders();
+                if (is_array($headers)) return $headers;
+            }
+
+            $headers = [];
+            foreach ($_SERVER as $key => $value) {
+                if (strncmp($key, 'HTTP_', 5) === 0) {
+                    $name = str_replace(
+                        ' ',
+                        '-',
+                        ucwords(strtolower(str_replace('_', ' ', substr($key, 5))))
+                    );
+                    $headers[$name] = $value;
+                }
+            }
+            return $headers;
+        }
+
         private function getAuthFromResponse($headers)
         {
             if (!array_key_exists('Authorization', $headers)) return false;
@@ -330,6 +375,7 @@ if (!class_exists("WC_Payerurl")) {
             if (0 !== stripos($authStr, 'Bearer ')) return false;
             $authStr = sanitize_text_field(str_replace('Bearer ', '', $authStr));
             $authStr = base64_decode($authStr);
+            if ($authStr === false) return false;
             $parts   = explode(':', $authStr, 2);
             return (count($parts) === 2) ? $parts : false;
         }
@@ -374,7 +420,7 @@ if (!class_exists("WC_Payerurl")) {
                 'notify_url'    => home_url('/wc-api/wc_payerurl'),
             );
 
-            $items        = $order->get_items();
+            $items         = $order->get_items();
             $args['items'] = array_reduce($items, function ($carry, $item) {
                 array_push($carry, [
                     'name'  => sanitize_text_field($item->get_name()),
@@ -413,10 +459,6 @@ if (!class_exists("WC_Payerurl")) {
             self::$logger->log($level, $message, ['source' => 'payerurl']);
         }
 
-        /**
-         * FIX: Added nonce verification and capability check to prevent
-         * unauthorized AJAX calls from non-admin users.
-         */
         public function testApiCreds()
         {
             // ── Verify nonce ───────────────────────────────────────────
@@ -435,9 +477,12 @@ if (!class_exists("WC_Payerurl")) {
                 ], 400);
             }
 
-            $body      = ['test' => sanitize_text_field(wp_unslash($_POST['app_key']))];
-            $signature = $this->generateSignature($body, sanitize_text_field(wp_unslash($_POST['secret_key'])));
-            $authStr   = $this->getAuthStr($signature, sanitize_text_field(wp_unslash($_POST['app_key'])));
+            $app_key    = sanitize_text_field(wp_unslash($_POST['app_key']));
+            $secret_key = sanitize_text_field(wp_unslash($_POST['secret_key']));
+
+            $body      = ['test' => $app_key];
+            $signature = $this->generateSignature($body, $secret_key);
+            $authStr   = $this->getAuthStr($signature, $app_key);
 
             $args = [
                 'timeout' => 45,
@@ -445,9 +490,18 @@ if (!class_exists("WC_Payerurl")) {
                 'headers' => $this->getRequestHeader($authStr),
             ];
 
-            if (!empty($this->enable_log)) $this->log(json_encode($args));
+            if (!empty($this->enable_log)) {
+                $loggable = $args;
+                unset($loggable['headers']);
+                $this->log(json_encode($loggable));
+            }
+
             $response = wp_remote_post($this->apiVerifyURL, $args);
-            if (!empty($this->enable_log)) $this->log(json_encode($response));
+
+            if (!empty($this->enable_log)) {
+                $loggable_response = is_wp_error($response) ? $response->get_error_message() : wp_remote_retrieve_body($response);
+                $this->log($loggable_response);
+            }
 
             if (is_wp_error($response)) {
                 return wp_send_json_error([
@@ -455,9 +509,9 @@ if (!class_exists("WC_Payerurl")) {
                 ], 500);
             }
 
-            $body = json_decode($response['body'], true);
-            if ($response['response']['code'] !== 200) {
-                return wp_send_json_error(['message' => $body['message']], 401);
+            $body = json_decode(wp_remote_retrieve_body($response), true);
+            if (wp_remote_retrieve_response_code($response) !== 200) {
+                return wp_send_json_error(['message' => $body['message'] ?? 'Unknown error'], 401);
             }
 
             return wp_send_json_success();

@@ -48,13 +48,7 @@ if (!class_exists('WC_Gateway_Payerurl_Blocks_Support')) {
             return array('wc-payerurl-payments-blocks');
         }
 
-        /**
-         * FIX (CVE / Patchstack report):
-         * Previously returned $this->settings which exposed payerurl_secret_key
-         * and payerurl_public_key to the browser via window.wc.wcSettings.
-         * Now returns only the display fields the frontend checkout UI needs.
-         * Credentials never leave the server.
-         */
+
         public function get_payment_method_data()
         {
             return [
@@ -64,9 +58,7 @@ if (!class_exists('WC_Gateway_Payerurl_Blocks_Support')) {
             ];
         }
 
-        /**
-         * Helper to safely read a single setting without exposing the full array.
-         */
+
         protected  function get_setting($key, $default = '')
         {
             return isset($this->settings[$key]) ? $this->settings[$key] : $default;
