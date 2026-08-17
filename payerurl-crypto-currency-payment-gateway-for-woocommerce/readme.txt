@@ -3,9 +3,9 @@ Contributors: Payerurl team
 Donate link:
 Tags: Binance, Visa crypto payment, Bitcoin,WooCommerce crypto,USDC,USDT, Ethereum, crypto payment gateway,  Coinbase,   cryptocurrency checkout, buy crypto with credit card
 Requires at least: 5.0
-Tested up to: 6.9.4
+Tested up to: 7.0.4
 Requires PHP: 7.0
-Stable tag: 1.8.7
+Stable tag: 1.8.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,9 @@ WooCommerce, OpenCart, PHP, Python, Node.js, Dhru Fusion, Laravel
 
 
 == Changelog ==
+= 1.8.8 =
+Added:
+# checkout page icon and text
 
 = 1.8.7 =
 Added:

@@ -9,12 +9,12 @@ return array(
     'title' => array(
         'title' => __('Title', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
         'type' => 'text',
-        'default' => __('USDT,BTC,ETH,Binance Pay', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
+        'default' => __('Crypto and binance payment', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
     ),
     'description' => array(
         'title' => __('Description', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
         'type' => 'textarea',
-        'default' => __('Crypto payment by ABC Crypto Checkout (Payerurl)', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
+        'default' => __('', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
     ),
     'section_credentials_title' => array(
         'title' => __('Payerurl API Credentials', 'ABC-crypto-currency-payment-gateway-for-wooCommerce'),
