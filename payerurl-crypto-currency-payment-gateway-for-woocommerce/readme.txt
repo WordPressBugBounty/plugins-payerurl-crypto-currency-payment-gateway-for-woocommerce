@@ -5,7 +5,7 @@ Tags: Binance, Visa crypto payment, Bitcoin,WooCommerce crypto,USDC,USDT, Ethere
 Requires at least: 5.0
 Tested up to: 7.0.4
 Requires PHP: 7.0
-Stable tag: 1.8.8
+Stable tag: 1.8.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -116,6 +116,10 @@ WooCommerce, OpenCart, PHP, Python, Node.js, Dhru Fusion, Laravel
 
 
 == Changelog ==
+= 1.8.9 =
+Added:
+# checkout page icon change
+
 = 1.8.8 =
 Added:
 # checkout page icon and text
